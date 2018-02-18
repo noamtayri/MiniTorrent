@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.App", "MiniTorrent.App\MiniTorrent.App.csproj", "{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Dal", "MiniTorrent.Dal\MiniTorrent.Dal.csproj", "{56FA0262-00D9-4BD5-AC9D-5D0C11310280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Api", "MiniTorrent.Api\MiniTorrent.Api.csproj", "{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

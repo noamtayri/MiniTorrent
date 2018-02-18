@@ -1,0 +1,17 @@
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.App.exe.config
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.App.exe.config
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.App.exe
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.App.pdb
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.Dal.dll
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\bin\Debug\MiniTorrent.Dal.pdb
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.csprojResolveAssemblyReference.cache
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MainWindow.g.cs
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\App.g.cs
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App_MarkupCompile.cache
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App_MarkupCompile.lref
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MainWindow.baml
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.g.resources
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.Properties.Resources.resources
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.csproj.GenerateResource.Cache
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.exe
+C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.App\obj\Debug\MiniTorrent.App.pdb
