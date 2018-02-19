@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Api", "MiniTorr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{2052E318-AB91-413B-BC24-DB06C72276DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA} = {2052E318-AB91-413B-BC24-DB06C72276DB}
+		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF} = {2052E318-AB91-413B-BC24-DB06C72276DB}
 	EndGlobalSection
 EndGlobal

@@ -22,7 +22,10 @@ namespace MiniTorrent.Api.Domain
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
-                
+                return miniTorentDB.Users
+                    .Where(u => u.UserName.Equals(userName))
+                    .Select(u => new User { UserName = u.UserName, Password = u.Password })
+                    .FirstOrDefault();
             }
         }
     }
