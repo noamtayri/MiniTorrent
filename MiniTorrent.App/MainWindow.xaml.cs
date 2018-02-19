@@ -24,7 +24,7 @@ namespace MiniTorrent.App
         public MainWindow()
         {
             InitializeComponent();
-            Class1 a = new Class1();
+            //Class1 a = new Class1();
         }
     }
 }
