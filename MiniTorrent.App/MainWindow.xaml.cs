@@ -26,7 +26,10 @@ namespace MiniTorrent.App
             InitializeComponent();
             //Class1 a = new Class1();
         }
-
+        
+        /**
+         * login button - check username and password
+         */
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
