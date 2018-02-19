@@ -8,14 +8,13 @@
         Title="MiniTorrent" Height="500" Width="700">
     <Grid>
         <Label x:Name="SearchFileLabel" Content="File Name:" HorizontalAlignment="Left" Margin="41,19,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="23" Margin="106,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="287"/>
-        <Button x:Name="SearchFileButton" Content="Search" HorizontalAlignment="Left" Margin="418,25,0,0" VerticalAlignment="Top" Width="78"/>
-        <ListView x:Name="SearchResaultListView" HorizontalAlignment="Left" Height="83" Margin="41,68,0,0" VerticalAlignment="Top" Width="614">
+        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="23" Margin="106,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="287" TextChanged="SearchTextBox_TextChanged_1"/>
+        <ListView x:Name="SearchResaultListView" HorizontalAlignment="Left" Height="105" Margin="41,58,0,0" VerticalAlignment="Top" Width="614">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="file name" Width="369"/>
-                    <GridViewColumn Header="size" Width="120"/>
-                    <GridViewColumn Header="resources" Width="120"/>
+                    <GridViewColumn Header="file name" Width="369" DisplayMemberBinding="{Binding fileName}"/>
+                    <GridViewColumn Header="size" Width="120" DisplayMemberBinding="{Binding size}"/>
+                    <GridViewColumn Header="resources" Width="120" DisplayMemberBinding="{Binding resourcesNumber}"/>
                 </GridView>
             </ListView.View>
         </ListView>
