@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using DomainModel;
+using MiniTorrent.Dal;
+using User = DomainModel.User;
 
 namespace MiniTorrent.Api.Domain
 {
@@ -15,6 +17,13 @@ namespace MiniTorrent.Api.Domain
                 new User { UserName = "Nofar", Password = "12345"}
             };
             return users.FirstOrDefault(u => u.UserName.Equals(userName));
+        }
+        public User GetUser2(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                
+            }
         }
     }
 }
