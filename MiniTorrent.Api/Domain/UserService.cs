@@ -7,5 +7,6 @@ namespace MiniTorrent.Api.Domain
 {
     public class UserService
     {
+
     }
 }

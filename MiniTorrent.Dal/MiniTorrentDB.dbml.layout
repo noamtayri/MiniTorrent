@@ -1,1 +1,12 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MiniTorrentDB">
+  <DataContextMoniker Name="/MiniTorrentDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="60535f77-c6c2-41b1-8675-2cb94891e9eb" absoluteBounds="3.25, 2.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/MiniTorrentDBDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42a0c04a-c91c-4e18-9dde-277fa8290f1f" absoluteBounds="3.265, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

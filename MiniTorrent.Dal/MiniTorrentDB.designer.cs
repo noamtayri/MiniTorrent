@@ -22,6 +22,7 @@ namespace MiniTorrent.Dal
 	using System;
 	
 	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="MiniTorrent")]
 	public partial class MiniTorrentDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,6 +31,12 @@ namespace MiniTorrent.Dal
     #region Extensibility Method Definitions
     partial void OnCreated();
     #endregion
+		
+		public MiniTorrentDBDataContext() : 
+				base(global::MiniTorrent.Dal.Properties.Settings.Default.MiniTorrentConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public MiniTorrentDBDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -53,6 +60,77 @@ namespace MiniTorrent.Dal
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User
+	{
+		
+		private int _ID;
+		
+		private string _UserName;
+		
+		private string _Password;
+		
+		public User()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this._Password = value;
+				}
+			}
 		}
 	}
 }
