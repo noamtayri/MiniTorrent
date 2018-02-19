@@ -1,4 +1,0 @@
-C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Dal\bin\Debug\MiniTorrent.Dal.dll
-C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Dal\bin\Debug\MiniTorrent.Dal.pdb
-C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Dal\obj\Debug\MiniTorrent.Dal.dll
-C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Dal\obj\Debug\MiniTorrent.Dal.pdb
