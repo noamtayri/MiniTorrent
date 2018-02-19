@@ -26,5 +26,34 @@ namespace MiniTorrent.App
             InitializeComponent();
             //Class1 a = new Class1();
         }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
+
+            if (checkLogIn(username, password))
+            {
+                Window1 window1 = new Window1();
+                window1.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Wrong username or password", "Error");
+            }        
+        }
+        /**
+         * helper method to resemble check login parameters from Web Service
+         */
+        private Boolean checkLogIn(string username, string password)
+        {
+            Dictionary<string,string> identifiedusers = new Dictionary<string, string>();
+            identifiedusers.Add("noam","1234");
+            identifiedusers.Add("a","aaa");
+            identifiedusers.Add("b","bbb");
+
+            return identifiedusers.Any(entry => entry.Key == username && entry.Value == password);
+        }
     }
 }
