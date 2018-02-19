@@ -1,0 +1,36 @@
+﻿<Window x:Class="MiniTorrent.App.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiniTorrent.App"
+        mc:Ignorable="d"
+        Title="MiniTorrent" Height="500" Width="700">
+    <Grid>
+        <Label x:Name="SearchFileLabel" Content="File Name:" HorizontalAlignment="Left" Margin="41,30,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="23" Margin="106,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="287"/>
+        <Button x:Name="SearchFileButton" Content="Search" HorizontalAlignment="Left" Margin="418,36,0,0" VerticalAlignment="Top" Width="78"/>
+        <ListView x:Name="SearchResaultListView" HorizontalAlignment="Left" Height="83" Margin="41,79,0,0" VerticalAlignment="Top" Width="614">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="file name" Width="369"/>
+                    <GridViewColumn Header="size" Width="120"/>
+                    <GridViewColumn Header="resources" Width="120"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="FileTransferListView" HorizontalAlignment="Left" Height="232" Margin="41,213,0,0" VerticalAlignment="Top" Width="614">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="file name" Width="210"/>
+                    <GridViewColumn Header="download/upload" Width="110"/>
+                    <GridViewColumn Header="size" Width="100"/>
+                    <GridViewColumn Header="resources" Width="70"/>
+                    <GridViewColumn Header="time" Width="120"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="TransferLabel" Content="Transfer:" HorizontalAlignment="Left" Margin="41,183,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
