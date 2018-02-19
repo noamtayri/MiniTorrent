@@ -136,6 +136,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Domain\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

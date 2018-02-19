@@ -83,7 +83,7 @@ namespace MiniTorrent.App
         {
             List<File> allFiles = new List<File>();
 
-            File file1 = new File("aaa", 120, 2);
+            File file1 = new File("aaa bgt", 120, 2);
             File file2 = new File("bbb", 240, 1);
             File file3 = new File("ccc", 12, 0);
             File file4 = new File("ddd", 1010, 8);

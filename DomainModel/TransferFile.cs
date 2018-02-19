@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
-    class TransferFile
+    public class TransferFile
     {
+
     }
 }
