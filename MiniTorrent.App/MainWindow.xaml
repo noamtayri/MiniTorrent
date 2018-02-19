@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniTorrent.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="LogInWindow" Height="350" Width="525">
     <Grid>
-        <Label x:Name="usernameLabel" Content="Username" HorizontalAlignment="Left" Margin="113,74,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="UsernameLabel" Content="Username" HorizontalAlignment="Left" Margin="113,74,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="UsernameTextBox" HorizontalAlignment="Left" Height="23" Margin="113,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232"/>
-        <Label x:Name="passwordLabel" Content="Password" HorizontalAlignment="Left" Margin="113,142,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="113,173,0,0" VerticalAlignment="Top" Width="232" Height="23"/>
-        <Button x:Name="loginButton" Content="LogIn" HorizontalAlignment="Left" Margin="187,220,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label x:Name="PasswordLabel" Content="Password" HorizontalAlignment="Left" Margin="113,142,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="113,173,0,0" VerticalAlignment="Top" Width="232" Height="23"/>
+        <Button x:Name="LoginButton" Content="LogIn" HorizontalAlignment="Left" Margin="192,220,0,0" VerticalAlignment="Top" Width="78"/>
 
     </Grid>
 </Window>

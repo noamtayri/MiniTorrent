@@ -36,6 +36,5 @@ C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פר�
 C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\bin\System.Net.Http.Formatting.xml
 C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\bin\System.Web.Http.xml
 C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\bin\System.Web.Http.WebHost.xml
-C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\obj\Debug\MiniTorrent.Api.csprojResolveAssemblyReference.cache
 C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\obj\Debug\MiniTorrent.Api.dll
 C:\Users\USER\Desktop\Noam\שנה ג\סמסטר א\תכנות ברשת NET\פרויקט\MiniTorrent\MiniTorrent.Api\obj\Debug\MiniTorrent.Api.pdb
