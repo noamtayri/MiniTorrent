@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MiniTorrent.Service.MiniTorrentService" CodeBehind="MiniTorrentService.svc.cs" %>

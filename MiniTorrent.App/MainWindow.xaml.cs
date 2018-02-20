@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
 {
@@ -33,6 +24,9 @@ namespace MiniTorrent.App
         {
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
+
+            var client = new MiniTorrentServiceClient();
+            var user = client.Login(username, password);
 
             if (checkLogIn(username, password))
             {

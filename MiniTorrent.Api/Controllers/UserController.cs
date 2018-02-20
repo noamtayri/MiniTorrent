@@ -17,11 +17,6 @@ namespace MiniTorrent.Api.Controllers
         }
 
         // GET: api/User/5
-        public User Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/User
         public void Post([FromBody]string value)
         {

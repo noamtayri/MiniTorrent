@@ -1,7 +1,7 @@
 ﻿using DomainModel;
 using MiniTorrent.Dal.Providers;
 
-namespace MiniTorrent.Api.Domain
+namespace MiniTorrent.Service.Domain
 {
     public class UserService
     {

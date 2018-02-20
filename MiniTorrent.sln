@@ -4,14 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.App", "MiniTorrent.App\MiniTorrent.App.csproj", "{D7EFEA9F-7876-4D95-A972-1F4686F35DCA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{81D06856-FC72-425C-90AD-69508E0B4862} = {81D06856-FC72-425C-90AD-69508E0B4862}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Dal", "MiniTorrent.Dal\MiniTorrent.Dal.csproj", "{56FA0262-00D9-4BD5-AC9D-5D0C11310280}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Api", "MiniTorrent.Api\MiniTorrent.Api.csproj", "{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{2052E318-AB91-413B-BC24-DB06C72276DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTorrent.Service", "MiniTorrent.Service\MiniTorrent.Service.csproj", "{81D06856-FC72-425C-90AD-69508E0B4862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,20 +30,20 @@ Global
 		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56FA0262-00D9-4BD5-AC9D-5D0C11310280}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{182B3445-55CB-4B2B-A8D6-D83EB90BCBC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D06856-FC72-425C-90AD-69508E0B4862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D06856-FC72-425C-90AD-69508E0B4862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D06856-FC72-425C-90AD-69508E0B4862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D06856-FC72-425C-90AD-69508E0B4862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D7EFEA9F-7876-4D95-A972-1F4686F35DCA} = {2052E318-AB91-413B-BC24-DB06C72276DB}
-		{1F5C1E24-8F9B-45DE-86B5-BED547D738DF} = {2052E318-AB91-413B-BC24-DB06C72276DB}
+		{81D06856-FC72-425C-90AD-69508E0B4862} = {2052E318-AB91-413B-BC24-DB06C72276DB}
 	EndGlobalSection
 EndGlobal
