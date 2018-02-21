@@ -28,7 +28,8 @@ namespace MiniTorrent.App
             var client = new MiniTorrentServiceClient();
             var user = client.Login(username, password);
 
-            if (checkLogIn(username, password))
+            //if (checkLogIn(username, password))
+            if (user != null)
             {
                 Window1 window1 = new Window1();
                 window1.Show();
