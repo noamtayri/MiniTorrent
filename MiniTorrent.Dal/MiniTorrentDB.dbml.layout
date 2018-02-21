@@ -8,5 +8,11 @@
         <elementListCompartment Id="42a0c04a-c91c-4e18-9dde-277fa8290f1f" absoluteBounds="3.265, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="a45fbf18-9f14-4c26-9f9d-c491dfccc129" absoluteBounds="1.125, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MiniTorrentDBDataContext/TransferFile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad14e33f-c2ea-41ff-9ab4-93a4474e94c3" absoluteBounds="1.1400000000000001, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

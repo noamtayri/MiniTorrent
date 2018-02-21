@@ -69,6 +69,14 @@ namespace MiniTorrent.Dal
 				return this.GetTable<User>();
 			}
 		}
+		
+		public System.Data.Linq.Table<TransferFile> TransferFiles
+		{
+			get
+			{
+				return this.GetTable<TransferFile>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
@@ -129,6 +137,87 @@ namespace MiniTorrent.Dal
 				if ((this._Password != value))
 				{
 					this._Password = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TransferFiles")]
+	public partial class TransferFile
+	{
+		
+		private int _ID;
+		
+		private string _FileName;
+		
+		private System.Nullable<int> _FileSize;
+		
+		private System.Nullable<int> _FileResources;
+		
+		public TransferFile()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileName", DbType="NVarChar(50)")]
+		public string FileName
+		{
+			get
+			{
+				return this._FileName;
+			}
+			set
+			{
+				if ((this._FileName != value))
+				{
+					this._FileName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileSize", DbType="Int")]
+		public System.Nullable<int> FileSize
+		{
+			get
+			{
+				return this._FileSize;
+			}
+			set
+			{
+				if ((this._FileSize != value))
+				{
+					this._FileSize = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileResources", DbType="Int")]
+		public System.Nullable<int> FileResources
+		{
+			get
+			{
+				return this._FileResources;
+			}
+			set
+			{
+				if ((this._FileResources != value))
+				{
+					this._FileResources = value;
 				}
 			}
 		}
