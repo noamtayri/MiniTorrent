@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
 {
@@ -23,6 +24,8 @@ namespace MiniTorrent.App
         {
             InitializeComponent();
 
+
+            /*
             //list of file to download
             List<File> allFiles = new List<File>();
             allFiles = fileList();   
@@ -33,6 +36,7 @@ namespace MiniTorrent.App
             //handle in the search
             CollectionView view = (CollectionView) CollectionViewSource.GetDefaultView(SearchResaultListView.ItemsSource);
             view.Filter = FileFilter;
+            */
         }
         /**
          * helper for the listview filtering
@@ -108,6 +112,11 @@ namespace MiniTorrent.App
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            string fileName = SearchTextBox.Text;
+
+            var client = new MiniTorrentServiceClient();
+            var files = client.
+
             CollectionViewSource.GetDefaultView(SearchResaultListView.ItemsSource).Refresh();
         }
     }
