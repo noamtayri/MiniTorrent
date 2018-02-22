@@ -18,7 +18,10 @@ namespace MiniTorrent.Service.Domain
 
         public List<TransferFile> SearchFiles(string fileName)
         {
-            return null;
+            var files = _miniTorrentProvider.GetSearchedFiles(fileName);
+            if (files == null)
+                return null;
+            return files;
         }
     }
 }
