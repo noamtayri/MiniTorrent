@@ -115,7 +115,9 @@ namespace MiniTorrent.App
             string fileName = SearchTextBox.Text;
 
             var client = new MiniTorrentServiceClient();
-            var files = client.
+            var files = client.SearchFiles(fileName);
+            if (files != null)
+                SearchResaultListView.ItemsSource = files;
 
             CollectionViewSource.GetDefaultView(SearchResaultListView.ItemsSource).Refresh();
         }

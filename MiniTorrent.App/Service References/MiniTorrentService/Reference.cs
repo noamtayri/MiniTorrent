@@ -23,7 +23,16 @@ namespace MiniTorrent.App.MiniTorrentService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MiniTorrent.App.MiniTorrentService.TransferFile[] OwnedFilesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PortField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
@@ -35,6 +44,32 @@ namespace MiniTorrent.App.MiniTorrentService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IP {
+            get {
+                return this.IPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IPField, value) != true)) {
+                    this.IPField = value;
+                    this.RaisePropertyChanged("IP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MiniTorrent.App.MiniTorrentService.TransferFile[] OwnedFiles {
+            get {
+                return this.OwnedFilesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OwnedFilesField, value) != true)) {
+                    this.OwnedFilesField = value;
+                    this.RaisePropertyChanged("OwnedFiles");
+                }
             }
         }
         
@@ -52,6 +87,19 @@ namespace MiniTorrent.App.MiniTorrentService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Port {
+            get {
+                return this.PortField;
+            }
+            set {
+                if ((this.PortField.Equals(value) != true)) {
+                    this.PortField = value;
+                    this.RaisePropertyChanged("Port");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string UserName {
             get {
                 return this.UserNameField;
@@ -60,6 +108,83 @@ namespace MiniTorrent.App.MiniTorrentService {
                 if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
                     this.UserNameField = value;
                     this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferFile", Namespace="http://schemas.datacontract.org/2004/07/DomainModel")]
+    [System.SerializableAttribute()]
+    public partial class TransferFile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FileSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ResourcesNumberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FileSize {
+            get {
+                return this.FileSizeField;
+            }
+            set {
+                if ((this.FileSizeField.Equals(value) != true)) {
+                    this.FileSizeField = value;
+                    this.RaisePropertyChanged("FileSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ResourcesNumber {
+            get {
+                return this.ResourcesNumberField;
+            }
+            set {
+                if ((this.ResourcesNumberField.Equals(value) != true)) {
+                    this.ResourcesNumberField = value;
+                    this.RaisePropertyChanged("ResourcesNumber");
                 }
             }
         }
@@ -89,6 +214,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/Login", ReplyAction="http://tempuri.org/IMiniTorrentService/LoginResponse")]
         System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> LoginAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/SearchFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/SearchFilesResponse")]
+        MiniTorrent.App.MiniTorrentService.TransferFile[] SearchFiles(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/SearchFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/SearchFilesResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> SearchFilesAsync(string fileName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -132,6 +263,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> LoginAsync(string userName, string password) {
             return base.Channel.LoginAsync(userName, password);
+        }
+        
+        public MiniTorrent.App.MiniTorrentService.TransferFile[] SearchFiles(string fileName) {
+            return base.Channel.SearchFiles(fileName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> SearchFilesAsync(string fileName) {
+            return base.Channel.SearchFilesAsync(fileName);
         }
     }
 }

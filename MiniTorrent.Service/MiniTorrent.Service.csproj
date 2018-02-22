@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AuthService.cs" />
+    <Compile Include="Domain\SearchFileService.cs" />
     <Compile Include="Domain\UserService.cs" />
     <Compile Include="MiniTorrentService.svc.cs">
       <DependentUpon>MiniTorrentService.svc</DependentUpon>

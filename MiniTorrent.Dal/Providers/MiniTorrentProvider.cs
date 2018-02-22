@@ -19,7 +19,7 @@ namespace MiniTorrent.Dal.Providers
             };
             return users.FirstOrDefault(u => u.UserName.Equals(userName));
         }
-        public DomainModel.User GetUser(string userName)
+        public DomainModel.User  GetUser(string userName)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
