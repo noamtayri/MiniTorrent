@@ -103,6 +103,11 @@ namespace MiniTorrent.App
          */
         private void SearchTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
+            //CollectionViewSource.GetDefaultView(SearchResaultListView.ItemsSource).Refresh();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
             CollectionViewSource.GetDefaultView(SearchResaultListView.ItemsSource).Refresh();
         }
     }

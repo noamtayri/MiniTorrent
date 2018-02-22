@@ -31,6 +31,7 @@
         </ListView>
         <Label x:Name="TransferLabel" Content="Transfer:" HorizontalAlignment="Left" Margin="41,168,0,0" VerticalAlignment="Top"/>
         <Button x:Name="LogOutButton" Content="Log Out" HorizontalAlignment="Left" Margin="603,435,0,0" VerticalAlignment="Top" Width="75" Click="LogOutButton_Click"/>
+        <Button x:Name="SearchButton" Content="Search File" HorizontalAlignment="Left" Margin="418,24,0,0" VerticalAlignment="Top" Width="75" Click="SearchButton_Click"/>
 
     </Grid>
 </Window>
