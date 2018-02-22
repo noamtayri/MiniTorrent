@@ -29,5 +29,16 @@ namespace MiniTorrent.Dal.Providers
                     .FirstOrDefault();
             }
         }
+
+        public List<DomainModel.TransferFile> GetSearchedFiles(string fileName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                return miniTorentDB.TransferFiles
+                    .Where(f => f.FileName.Contains(fileName))
+                    .Select(f => new DomainModel.TransferFile { FileName = f.FileName, FileSize = (int)f.FileSize, ResourcesNumber = (int)f.FileResources })
+                    .ToList();
+            }
+        }
     }
 }
