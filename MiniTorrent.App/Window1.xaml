@@ -12,9 +12,9 @@
         <ListView x:Name="SearchResaultListView" HorizontalAlignment="Left" Height="105" Margin="41,58,0,0" VerticalAlignment="Top" Width="614">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="file name" Width="369" DisplayMemberBinding="{Binding fileName}"/>
-                    <GridViewColumn Header="size" Width="120" DisplayMemberBinding="{Binding size}"/>
-                    <GridViewColumn Header="resources" Width="120" DisplayMemberBinding="{Binding resourcesNumber}"/>
+                    <GridViewColumn Header="file name" Width="369" DisplayMemberBinding="{Binding FileName}"/>
+                    <GridViewColumn Header="size" Width="120" DisplayMemberBinding="{Binding FileSize}"/>
+                    <GridViewColumn Header="resources" Width="120" DisplayMemberBinding="{Binding ResourcesNumber}"/>
                 </GridView>
             </ListView.View>
         </ListView>
