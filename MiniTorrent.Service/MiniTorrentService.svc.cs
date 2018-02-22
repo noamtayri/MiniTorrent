@@ -24,5 +24,11 @@ namespace MiniTorrent.Service
             AuthService authService = new AuthService();
             return authService.Login(userName, password);
         }
+
+        public List<TransferFile> SearchFiles(string fileName)
+        {
+            SearchFileService searchFileService = new SearchFileService();
+            return searchFileService.SearchFiles(fileName);
+        }
     }
 }

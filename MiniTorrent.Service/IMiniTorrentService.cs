@@ -20,6 +20,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         User Login(string userName, string password);
 
+        [OperationContract]
+        List<TransferFile> SearchFiles(string fileName);
+
 
         // TODO: Add your service operations here
     }
