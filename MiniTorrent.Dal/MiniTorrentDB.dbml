@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MiniTorrent" Class="MiniTorrentDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=NOAM_TAYRI\SQLEXPRESS;Initial Catalog=MiniTorrent;Integrated Security=True" SettingsObjectName="MiniTorrent.Dal.Properties.Settings" SettingsPropertyName="MiniTorrentConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.UsersTransferFiles" Member="UsersTransferFiles">
-    <Type Name="UsersTransferFile">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TransferFileID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="User_UsersTransferFile" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
-      <Association Name="TransferFile_UsersTransferFile" Member="TransferFile" ThisKey="TransferFileID" OtherKey="ID" Type="TransferFile" IsForeignKey="true" />
+  <Table Name="dbo.TransferFiles" Member="TransferFiles">
+    <Type Name="TransferFile">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TransferFile_UsersTransferFile" Member="UsersTransferFiles" ThisKey="ID" OtherKey="TransferFileID" Type="UsersTransferFile" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -13,16 +13,16 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LogIn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="User_UsersTransferFile" Member="UsersTransferFiles" ThisKey="ID" OtherKey="UserID" Type="UsersTransferFile" />
     </Type>
   </Table>
-  <Table Name="dbo.TransferFiles" Member="TransferFiles">
-    <Type Name="TransferFile">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="FileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FileResources" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TransferFile_UsersTransferFile" Member="UsersTransferFiles" ThisKey="ID" OtherKey="TransferFileID" Type="UsersTransferFile" />
+  <Table Name="dbo.UsersTransferFiles" Member="UsersTransferFiles">
+    <Type Name="UsersTransferFile">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TransferFileID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="TransferFile_UsersTransferFile" Member="TransferFile" ThisKey="TransferFileID" OtherKey="ID" Type="TransferFile" IsForeignKey="true" />
+      <Association Name="User_UsersTransferFile" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

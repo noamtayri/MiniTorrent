@@ -30,15 +30,15 @@ namespace MiniTorrent.Dal
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUsersTransferFile(UsersTransferFile instance);
-    partial void UpdateUsersTransferFile(UsersTransferFile instance);
-    partial void DeleteUsersTransferFile(UsersTransferFile instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertTransferFile(TransferFile instance);
     partial void UpdateTransferFile(TransferFile instance);
     partial void DeleteTransferFile(TransferFile instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
+    partial void InsertUsersTransferFile(UsersTransferFile instance);
+    partial void UpdateUsersTransferFile(UsersTransferFile instance);
+    partial void DeleteUsersTransferFile(UsersTransferFile instance);
     #endregion
 		
 		public MiniTorrentDBDataContext() : 
@@ -71,11 +71,11 @@ namespace MiniTorrent.Dal
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<UsersTransferFile> UsersTransferFiles
+		public System.Data.Linq.Table<TransferFile> TransferFiles
 		{
 			get
 			{
-				return this.GetTable<UsersTransferFile>();
+				return this.GetTable<TransferFile>();
 			}
 		}
 		
@@ -87,318 +87,12 @@ namespace MiniTorrent.Dal
 			}
 		}
 		
-		public System.Data.Linq.Table<TransferFile> TransferFiles
+		public System.Data.Linq.Table<UsersTransferFile> UsersTransferFiles
 		{
 			get
 			{
-				return this.GetTable<TransferFile>();
+				return this.GetTable<UsersTransferFile>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsersTransferFiles")]
-	public partial class UsersTransferFile : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserID;
-		
-		private int _TransferFileID;
-		
-		private EntityRef<User> _User;
-		
-		private EntityRef<TransferFile> _TransferFile;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnTransferFileIDChanging(int value);
-    partial void OnTransferFileIDChanged();
-    #endregion
-		
-		public UsersTransferFile()
-		{
-			this._User = default(EntityRef<User>);
-			this._TransferFile = default(EntityRef<TransferFile>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferFileID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int TransferFileID
-		{
-			get
-			{
-				return this._TransferFileID;
-			}
-			set
-			{
-				if ((this._TransferFileID != value))
-				{
-					if (this._TransferFile.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTransferFileIDChanging(value);
-					this.SendPropertyChanging();
-					this._TransferFileID = value;
-					this.SendPropertyChanged("TransferFileID");
-					this.OnTransferFileIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UsersTransferFile", Storage="_User", ThisKey="UserID", OtherKey="ID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.UsersTransferFiles.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.UsersTransferFiles.Add(this);
-						this._UserID = value.ID;
-					}
-					else
-					{
-						this._UserID = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TransferFile_UsersTransferFile", Storage="_TransferFile", ThisKey="TransferFileID", OtherKey="ID", IsForeignKey=true)]
-		public TransferFile TransferFile
-		{
-			get
-			{
-				return this._TransferFile.Entity;
-			}
-			set
-			{
-				TransferFile previousValue = this._TransferFile.Entity;
-				if (((previousValue != value) 
-							|| (this._TransferFile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TransferFile.Entity = null;
-						previousValue.UsersTransferFiles.Remove(this);
-					}
-					this._TransferFile.Entity = value;
-					if ((value != null))
-					{
-						value.UsersTransferFiles.Add(this);
-						this._TransferFileID = value.ID;
-					}
-					else
-					{
-						this._TransferFileID = default(int);
-					}
-					this.SendPropertyChanged("TransferFile");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _UserName;
-		
-		private string _Password;
-		
-		private EntitySet<UsersTransferFile> _UsersTransferFiles;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    #endregion
-		
-		public User()
-		{
-			this._UsersTransferFiles = new EntitySet<UsersTransferFile>(new Action<UsersTransferFile>(this.attach_UsersTransferFiles), new Action<UsersTransferFile>(this.detach_UsersTransferFiles));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UsersTransferFile", Storage="_UsersTransferFiles", ThisKey="ID", OtherKey="UserID")]
-		public EntitySet<UsersTransferFile> UsersTransferFiles
-		{
-			get
-			{
-				return this._UsersTransferFiles;
-			}
-			set
-			{
-				this._UsersTransferFiles.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_UsersTransferFiles(UsersTransferFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_UsersTransferFiles(UsersTransferFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 	}
 	
@@ -414,8 +108,6 @@ namespace MiniTorrent.Dal
 		
 		private System.Nullable<int> _FileSize;
 		
-		private System.Nullable<int> _FileResources;
-		
 		private EntitySet<UsersTransferFile> _UsersTransferFiles;
 		
     #region Extensibility Method Definitions
@@ -428,8 +120,6 @@ namespace MiniTorrent.Dal
     partial void OnFileNameChanged();
     partial void OnFileSizeChanging(System.Nullable<int> value);
     partial void OnFileSizeChanged();
-    partial void OnFileResourcesChanging(System.Nullable<int> value);
-    partial void OnFileResourcesChanged();
     #endregion
 		
 		public TransferFile()
@@ -498,26 +188,6 @@ namespace MiniTorrent.Dal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileResources", DbType="Int")]
-		public System.Nullable<int> FileResources
-		{
-			get
-			{
-				return this._FileResources;
-			}
-			set
-			{
-				if ((this._FileResources != value))
-				{
-					this.OnFileResourcesChanging(value);
-					this.SendPropertyChanging();
-					this._FileResources = value;
-					this.SendPropertyChanged("FileResources");
-					this.OnFileResourcesChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TransferFile_UsersTransferFile", Storage="_UsersTransferFiles", ThisKey="ID", OtherKey="TransferFileID")]
 		public EntitySet<UsersTransferFile> UsersTransferFiles
 		{
@@ -561,6 +231,336 @@ namespace MiniTorrent.Dal
 		{
 			this.SendPropertyChanging();
 			entity.TransferFile = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _UserName;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _LogIn;
+		
+		private EntitySet<UsersTransferFile> _UsersTransferFiles;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnLogInChanging(System.Nullable<bool> value);
+    partial void OnLogInChanged();
+    #endregion
+		
+		public User()
+		{
+			this._UsersTransferFiles = new EntitySet<UsersTransferFile>(new Action<UsersTransferFile>(this.attach_UsersTransferFiles), new Action<UsersTransferFile>(this.detach_UsersTransferFiles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogIn", DbType="Bit")]
+		public System.Nullable<bool> LogIn
+		{
+			get
+			{
+				return this._LogIn;
+			}
+			set
+			{
+				if ((this._LogIn != value))
+				{
+					this.OnLogInChanging(value);
+					this.SendPropertyChanging();
+					this._LogIn = value;
+					this.SendPropertyChanged("LogIn");
+					this.OnLogInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UsersTransferFile", Storage="_UsersTransferFiles", ThisKey="ID", OtherKey="UserID")]
+		public EntitySet<UsersTransferFile> UsersTransferFiles
+		{
+			get
+			{
+				return this._UsersTransferFiles;
+			}
+			set
+			{
+				this._UsersTransferFiles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_UsersTransferFiles(UsersTransferFile entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_UsersTransferFiles(UsersTransferFile entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UsersTransferFiles")]
+	public partial class UsersTransferFile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private int _TransferFileID;
+		
+		private EntityRef<TransferFile> _TransferFile;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnTransferFileIDChanging(int value);
+    partial void OnTransferFileIDChanged();
+    #endregion
+		
+		public UsersTransferFile()
+		{
+			this._TransferFile = default(EntityRef<TransferFile>);
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferFileID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int TransferFileID
+		{
+			get
+			{
+				return this._TransferFileID;
+			}
+			set
+			{
+				if ((this._TransferFileID != value))
+				{
+					if (this._TransferFile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTransferFileIDChanging(value);
+					this.SendPropertyChanging();
+					this._TransferFileID = value;
+					this.SendPropertyChanged("TransferFileID");
+					this.OnTransferFileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TransferFile_UsersTransferFile", Storage="_TransferFile", ThisKey="TransferFileID", OtherKey="ID", IsForeignKey=true)]
+		public TransferFile TransferFile
+		{
+			get
+			{
+				return this._TransferFile.Entity;
+			}
+			set
+			{
+				TransferFile previousValue = this._TransferFile.Entity;
+				if (((previousValue != value) 
+							|| (this._TransferFile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TransferFile.Entity = null;
+						previousValue.UsersTransferFiles.Remove(this);
+					}
+					this._TransferFile.Entity = value;
+					if ((value != null))
+					{
+						value.UsersTransferFiles.Add(this);
+						this._TransferFileID = value.ID;
+					}
+					else
+					{
+						this._TransferFileID = default(int);
+					}
+					this.SendPropertyChanged("TransferFile");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UsersTransferFile", Storage="_User", ThisKey="UserID", OtherKey="ID", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.UsersTransferFiles.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.UsersTransferFiles.Add(this);
+						this._UserID = value.ID;
+					}
+					else
+					{
+						this._UserID = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
