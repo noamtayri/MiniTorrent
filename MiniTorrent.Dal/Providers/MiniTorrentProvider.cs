@@ -43,10 +43,47 @@ namespace MiniTorrent.Dal.Providers
                     ResourcesNumber = (int)f.TransferFile.FileResources
                 }).ToList();
                 */
-                return miniTorentDB.TransferFiles
+
+
+                /*
+                var files = miniTorentDB.TransferFiles
                     .Where(f => f.FileName.Contains(fileName))
-                    .Select(f => new DomainModel.TransferFile { FileName = f.FileName, FileSize = (int)f.FileSize, ResourcesNumber = (int)f.FileResources })
+                    .Select(f => new DomainModel.TransferFile { FileName = f.FileName, FileSize = (int)f.FileSize })
                     .ToList();
+                */
+                var a = miniTorentDB.UsersTransferFiles
+                    .Where(f => f.TransferFile.FileName.Contains(fileName) && f.User.LogIn.Equals(true))
+                    .GroupBy(u => u.TransferFileID)
+                    .Select(g => new DomainModel.TransferFile
+                    {
+                        FileName = g.First().TransferFile.FileName,
+                        FileSize = g.First().TransferFile.FileSize.GetValueOrDefault(),
+                        ResourcesNumber = g.Count()
+                    });
+
+                var b = miniTorentDB.TransferFiles
+                    .Where(f => f.FileName.Contains(fileName) && !a.Any(r => r.FileName.Equals(f.FileName)))
+                    .Select(t =>
+                        new DomainModel.TransferFile
+                        {
+                            FileName = t.FileName,
+                            FileSize = t.FileSize.GetValueOrDefault(),
+                            ResourcesNumber = 0
+                        })
+                    .ToList();
+                var d = a.ToList();
+                d.AddRange(b);
+
+                return d;
+                //.Select(fi => new DomainModel.TransferFile {FileName = fi.})
+
+
+
+
+
+
+
+
             }
         }
     }
