@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using MiniTorrent.App.AppLogic;
 using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
@@ -11,9 +12,12 @@ namespace MiniTorrent.App
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly UserLogic _userLogic;
+
         public MainWindow()
         {
             InitializeComponent();
+            _userLogic = new UserLogic();
             //Class1 a = new Class1();
         }
         
@@ -25,6 +29,8 @@ namespace MiniTorrent.App
             string username = UsernameTextBox.Text;
             string password = PasswordBox.Password;
 
+            _userLogic.LoginButton_ClickLogic(username, password, this);
+            /*
             var client = new MiniTorrentServiceClient();
             var user = client.Login(username, password);
 
@@ -38,7 +44,8 @@ namespace MiniTorrent.App
             else
             {
                 MessageBox.Show("Wrong username or password", "Error");
-            }        
+            }
+            */        
         }
         /**
          * helper method to resemble check login parameters from Web Service
