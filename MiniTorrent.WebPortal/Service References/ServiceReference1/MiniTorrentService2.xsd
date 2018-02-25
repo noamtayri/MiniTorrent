@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DomainModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DomainModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnedFiles" nillable="true" type="tns:ArrayOfTransferFile" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Port" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfTransferFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransferFile" nillable="true" type="tns:TransferFile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransferFile" nillable="true" type="tns:ArrayOfTransferFile" />
+  <xs:complexType name="TransferFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileSize" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourcesNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferFile" nillable="true" type="tns:TransferFile" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+</xs:schema>

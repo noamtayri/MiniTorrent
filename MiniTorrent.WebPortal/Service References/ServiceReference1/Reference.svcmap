@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8ba2b296-be51-491c-bbed-ac644e6425f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61345/MiniTorrentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MiniTorrentService.xsd" MetadataType="Schema" ID="029ae492-18e5-4701-93d1-cfeb2e4b16d0" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MiniTorrentService.wsdl" MetadataType="Wsdl" ID="0e4abe58-a264-4d69-b330-2bb3372980cf" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?wsdl" />
+    <MetadataFile FileName="MiniTorrentService.disco" MetadataType="Disco" ID="6b84425b-61c6-4bd8-906c-c9ad608108e1" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?disco" />
+    <MetadataFile FileName="MiniTorrentService1.xsd" MetadataType="Schema" ID="539052d7-b15d-4b68-b217-c8b1d10ebc05" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MiniTorrentService2.xsd" MetadataType="Schema" ID="93573439-fa21-41d7-979f-33bccf69bbd8" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
