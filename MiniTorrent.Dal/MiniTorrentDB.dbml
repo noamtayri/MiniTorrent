@@ -14,6 +14,8 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="LogIn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PORT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="User_UsersTransferFile" Member="UsersTransferFiles" ThisKey="ID" OtherKey="UserID" Type="UsersTransferFile" />
     </Type>
   </Table>

@@ -248,6 +248,10 @@ namespace MiniTorrent.Dal
 		
 		private System.Nullable<bool> _LogIn;
 		
+		private string _IP;
+		
+		private System.Nullable<int> _PORT;
+		
 		private EntitySet<UsersTransferFile> _UsersTransferFiles;
 		
     #region Extensibility Method Definitions
@@ -262,6 +266,10 @@ namespace MiniTorrent.Dal
     partial void OnPasswordChanged();
     partial void OnLogInChanging(System.Nullable<bool> value);
     partial void OnLogInChanged();
+    partial void OnIPChanging(string value);
+    partial void OnIPChanged();
+    partial void OnPORTChanging(System.Nullable<int> value);
+    partial void OnPORTChanged();
     #endregion
 		
 		public User()
@@ -346,6 +354,46 @@ namespace MiniTorrent.Dal
 					this._LogIn = value;
 					this.SendPropertyChanged("LogIn");
 					this.OnLogInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IP", DbType="NVarChar(50)")]
+		public string IP
+		{
+			get
+			{
+				return this._IP;
+			}
+			set
+			{
+				if ((this._IP != value))
+				{
+					this.OnIPChanging(value);
+					this.SendPropertyChanging();
+					this._IP = value;
+					this.SendPropertyChanged("IP");
+					this.OnIPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PORT", DbType="Int")]
+		public System.Nullable<int> PORT
+		{
+			get
+			{
+				return this._PORT;
+			}
+			set
+			{
+				if ((this._PORT != value))
+				{
+					this.OnPORTChanging(value);
+					this.SendPropertyChanging();
+					this._PORT = value;
+					this.SendPropertyChanged("PORT");
+					this.OnPORTChanged();
 				}
 			}
 		}

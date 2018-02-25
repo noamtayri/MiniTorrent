@@ -62,7 +62,12 @@ namespace MiniTorrent.App
             else
             {
                 var file = SearchResaultListView.SelectedItem as TransferFile;
-
+                if(MyUser.OwnedFiles.Contains(file))
+                    MessageBox.Show("You already own that file", "Error");
+                else
+                {
+                    
+                }
             }
         }
     }
