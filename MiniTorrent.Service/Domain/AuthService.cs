@@ -15,7 +15,6 @@ namespace MiniTorrent.Service.Domain
         public User Login(string userName, string password)
         {
             var user = _miniTorrentProvider.GetUser(userName);
-            //var user = _userService.GetUser2(userName);
             if (user == null)
                 return null;
             return ValidatePassword(password, user.Password) ? user : null;
