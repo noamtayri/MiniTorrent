@@ -31,7 +31,7 @@ namespace MiniTorrent.App
             //if (checkLogIn(username, password))
             if (user != null)
             {
-                Window1 window1 = new Window1();
+                Window1 window1 = new Window1(user);
                 window1.Show();
                 this.Hide();
             }

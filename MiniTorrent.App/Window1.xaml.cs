@@ -20,9 +20,15 @@ namespace MiniTorrent.App
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        public User MyUser { get; set; }
+
+        public Window1(User user)
         {
             InitializeComponent();
+
+            MyUser = user;
+
+            var clinet = new MiniTorrentServiceClient();
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
