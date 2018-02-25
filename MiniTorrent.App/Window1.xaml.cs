@@ -51,5 +51,18 @@ namespace MiniTorrent.App
             string fileName = SearchTextBox.Text;
             _fileLogic.SearchButton_ClickLogic(fileName, SearchResaultListView);
         }
+
+        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SearchResaultListView.SelectedItem == null)
+            {
+                MessageBox.Show("You must choose a file", "Error");
+            }
+            else
+            {
+                var file = SearchResaultListView.SelectedItem as TransferFile;
+
+            }
+        }
     }
 }
