@@ -32,18 +32,11 @@ namespace MiniTorrent.App
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
             _userLogic.LoginFlagLogic(MyUser.UserName);
-            //var clinet = new MiniTorrentServiceClient();
-            //clinet.LoginFlag(MyUser.UserName);
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             _userLogic.LogoutFlagLogic(MyUser.UserName, this);
-            //var clinet = new MiniTorrentServiceClient();
-            //clinet.LogoutFlag(MyUser.UserName);
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Show();
-            //this.Hide();
         }
         /**
          * search text box change - for search files
@@ -57,15 +50,6 @@ namespace MiniTorrent.App
         {
             string fileName = SearchTextBox.Text;
             _fileLogic.SearchButton_ClickLogic(fileName, SearchResaultListView);
-            //var client = new MiniTorrentServiceClient();
-            //var files = client.SearchFiles(fileName);
-            //if (files.Length != 0)
-            //    SearchResaultListView.ItemsSource = files;
-            //else
-            //{
-            //    SearchResaultListView.ItemsSource = null;
-            //    MessageBox.Show("File not found", "Error");
-            //}
         }
     }
 }
