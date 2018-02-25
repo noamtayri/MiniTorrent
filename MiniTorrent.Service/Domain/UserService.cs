@@ -12,9 +12,9 @@ namespace MiniTorrent.Service.Domain
             _miniTorrentProvider = new MiniTorrentProvider();
         }
 
-        public User GetUser(string userName)
+        public void LoginFlag(string userName)
         {
-            return _miniTorrentProvider.GetUser(userName);
+            _miniTorrentProvider.LoginFlag(userName);
         }
     }
 }

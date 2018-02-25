@@ -30,5 +30,11 @@ namespace MiniTorrent.Service
             SearchFileService searchFileService = new SearchFileService();
             return searchFileService.SearchFiles(fileName);
         }
+
+        public void LoginFlag(string userName)
+        {
+            UserService userService = new UserService();
+            userService.LoginFlag(userName);
+        }
     }
 }

@@ -77,13 +77,17 @@ namespace MiniTorrent.Dal.Providers
                 return d;
                 //.Select(fi => new DomainModel.TransferFile {FileName = fi.})
 
+            }
+        }
 
-
-
-
-
-
-
+        public void LoginFlag(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                var user = miniTorentDB.Users
+                    .FirstOrDefault(u => u.UserName.Equals(userName));
+                user.LogIn = true;
+                miniTorentDB.SubmitChanges();
             }
         }
     }

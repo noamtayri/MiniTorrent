@@ -27,8 +27,8 @@ namespace MiniTorrent.App
             InitializeComponent();
 
             MyUser = user;
-
             var clinet = new MiniTorrentServiceClient();
+            clinet.LoginFlag(MyUser.UserName);
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

@@ -220,6 +220,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/SearchFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/SearchFilesResponse")]
         System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> SearchFilesAsync(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LoginFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LoginFlagResponse")]
+        void LoginFlag(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LoginFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LoginFlagResponse")]
+        System.Threading.Tasks.Task LoginFlagAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -271,6 +277,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> SearchFilesAsync(string fileName) {
             return base.Channel.SearchFilesAsync(fileName);
+        }
+        
+        public void LoginFlag(string userName) {
+            base.Channel.LoginFlag(userName);
+        }
+        
+        public System.Threading.Tasks.Task LoginFlagAsync(string userName) {
+            return base.Channel.LoginFlagAsync(userName);
         }
     }
 }
