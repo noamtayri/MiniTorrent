@@ -64,14 +64,12 @@ namespace MiniTorrent.App
             else
             {
                 var file = SearchResaultListView.SelectedItem as TransferFile;
-                //if (MyUser.OwnedFiles.Select(f => f.FileName.Equals(file.FileName)))
 
-                var a = MyUser.OwnedFiles.Select(f => f.FileName);
-                if(a.Contains(file.FileName))
+                if (MyUser.OwnedFiles.Any(a => a.FileName.Equals(file?.FileName)))
                     MessageBox.Show("You already own that file", "Error");
                 else
                 {
-                    _transferLogic.DownloadLogic(file.FileName);
+                    _transferLogic.DownloadLogic(file?.FileName);
                 }
             }
         }
