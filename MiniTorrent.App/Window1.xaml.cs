@@ -32,6 +32,7 @@ namespace MiniTorrent.App
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
             _userLogic.LoginFlagLogic(MyUser.UserName);
+            _userLogic.RetrieveUserFilesLogic(MyUser);
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

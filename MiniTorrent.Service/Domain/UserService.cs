@@ -1,4 +1,5 @@
-﻿using DomainModel;
+﻿using System.Collections.Generic;
+using DomainModel;
 using MiniTorrent.Dal.Providers;
 
 namespace MiniTorrent.Service.Domain
@@ -20,6 +21,11 @@ namespace MiniTorrent.Service.Domain
         public void LogoutFlag(string userName)
         {
             _miniTorrentProvider.LogoutFlag(userName);
+        }
+
+        public List<TransferFile> GetUserFiles(string userName)
+        {
+            return _miniTorrentProvider.GetMyFiles(userName);
         }
     }
 }

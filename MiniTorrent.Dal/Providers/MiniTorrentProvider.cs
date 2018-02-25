@@ -72,5 +72,21 @@ namespace MiniTorrent.Dal.Providers
                 miniTorentDB.SubmitChanges();
             }
         }
+
+        public List<DomainModel.TransferFile> GetMyFiles(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                return miniTorentDB.UsersTransferFiles
+                    .Where(u => u.User.UserName.Equals(userName))
+                    .Select(u =>
+                        new DomainModel.TransferFile
+                        {
+                            FileName = u.TransferFile.FileName,
+                            FileSize = u.TransferFile.FileSize.GetValueOrDefault()
+                        })
+                    .ToList();
+            }
+        }
     }
 }

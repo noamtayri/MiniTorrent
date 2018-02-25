@@ -37,6 +37,12 @@
   <wsdl:message name="IMiniTorrentService_LogoutFlag_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogoutFlagResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetMyFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyFiles" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetMyFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyFilesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="LogoutFlag">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/LogoutFlag" message="tns:IMiniTorrentService_LogoutFlag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/LogoutFlagResponse" message="tns:IMiniTorrentService_LogoutFlag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetMyFiles" message="tns:IMiniTorrentService_GetMyFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetMyFilesResponse" message="tns:IMiniTorrentService_GetMyFiles_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="LogoutFlag">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/LogoutFlag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyFiles">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetMyFiles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -29,6 +29,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         void LogoutFlag(string userName);
 
+        [OperationContract]
+        List<TransferFile> GetMyFiles(string userName);
+
         // TODO: Add your service operations here
     }
 

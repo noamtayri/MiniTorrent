@@ -21,10 +21,10 @@
         <ListView x:Name="FileTransferListView" HorizontalAlignment="Left" Height="232" Margin="41,198,0,0" VerticalAlignment="Top" Width="614">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="file name" Width="210"/>
+                    <GridViewColumn Header="file name" Width="210" DisplayMemberBinding="{Binding FileName}"/>
                     <GridViewColumn Header="download/upload" Width="110"/>
-                    <GridViewColumn Header="size" Width="100"/>
-                    <GridViewColumn Header="resources" Width="70"/>
+                    <GridViewColumn Header="size" Width="100" DisplayMemberBinding="{Binding FileSize}"/>
+                    <GridViewColumn Header="resources" Width="70" DisplayMemberBinding="{Binding ResourcesNumber}"/>
                     <GridViewColumn Header="time" Width="120"/>
                 </GridView>
             </ListView.View>

@@ -232,6 +232,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LogoutFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LogoutFlagResponse")]
         System.Threading.Tasks.Task LogoutFlagAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetMyFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/GetMyFilesResponse")]
+        MiniTorrent.App.MiniTorrentService.TransferFile[] GetMyFiles(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetMyFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/GetMyFilesResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> GetMyFilesAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -299,6 +305,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task LogoutFlagAsync(string userName) {
             return base.Channel.LogoutFlagAsync(userName);
+        }
+        
+        public MiniTorrent.App.MiniTorrentService.TransferFile[] GetMyFiles(string userName) {
+            return base.Channel.GetMyFiles(userName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> GetMyFilesAsync(string userName) {
+            return base.Channel.GetMyFilesAsync(userName);
         }
     }
 }

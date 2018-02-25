@@ -41,5 +41,11 @@ namespace MiniTorrent.App.AppLogic
             mainWindow.Show();
             window.Hide();
         }
+
+        public void RetrieveUserFilesLogic(User user)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            user.OwnedFiles = clinet.GetMyFiles(user.UserName);
+        }
     }
 }

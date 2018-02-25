@@ -68,4 +68,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMyFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMyFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DomainModel" minOccurs="0" name="GetMyFilesResult" nillable="true" type="q3:ArrayOfTransferFile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

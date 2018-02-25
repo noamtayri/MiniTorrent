@@ -42,5 +42,11 @@ namespace MiniTorrent.Service
             UserService userService = new UserService();
             userService.LogoutFlag(userName);
         }
+
+        public List<TransferFile> GetMyFiles(string userName)
+        {
+            UserService userService = new UserService();
+            return userService.GetUserFiles(userName);
+        }
     }
 }
