@@ -24,6 +24,7 @@ namespace MiniTorrent.App
         public User MyUser { get; set; }
         private readonly UserLogic _userLogic;
         private readonly FileLogic _fileLogic;
+        private readonly TransferLogic _transferLogic;
 
         public Window1(User user)
         {
@@ -31,6 +32,7 @@ namespace MiniTorrent.App
             MyUser = user;
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
+            _transferLogic = new TransferLogic();
             _userLogic.LoginFlagLogic(MyUser.UserName);
             _userLogic.RetrieveUserFilesLogic(MyUser);
         }
@@ -62,11 +64,14 @@ namespace MiniTorrent.App
             else
             {
                 var file = SearchResaultListView.SelectedItem as TransferFile;
-                if(MyUser.OwnedFiles.Contains(file))
+                //if (MyUser.OwnedFiles.Select(f => f.FileName.Equals(file.FileName)))
+
+                var a = MyUser.OwnedFiles.Select(f => f.FileName);
+                if(a.Contains(file.FileName))
                     MessageBox.Show("You already own that file", "Error");
                 else
                 {
-                    
+                    _transferLogic.DownloadLogic(file.FileName);
                 }
             }
         }

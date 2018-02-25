@@ -32,6 +32,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         List<TransferFile> GetMyFiles(string userName);
 
+        [OperationContract]
+        List<User> GetListOfResources(string fileName);
+
         // TODO: Add your service operations here
     }
 

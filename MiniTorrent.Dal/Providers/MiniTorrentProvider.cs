@@ -88,5 +88,16 @@ namespace MiniTorrent.Dal.Providers
                     .ToList();
             }
         }
+
+        public List<DomainModel.User> GetListOfResources(string fileName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                return miniTorentDB.UsersTransferFiles
+                    .Where(f => f.TransferFile.FileName.Equals(fileName) && f.User.LogIn.Equals(true))
+                    .Select(u => new DomainModel.User {Port = u.User.PORT.GetValueOrDefault(), IP = u.User.IP})
+                    .ToList();
+            }        
+        }
     }
 }

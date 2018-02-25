@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppLogic\FileLogic.cs" />
+    <Compile Include="AppLogic\TransferLogic.cs" />
     <Compile Include="AppLogic\UserLogic.cs" />
     <Compile Include="Service References\MiniTorrentService\Reference.cs">
       <AutoGen>True</AutoGen>

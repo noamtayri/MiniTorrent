@@ -43,6 +43,12 @@
   <wsdl:message name="IMiniTorrentService_GetMyFiles_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFilesResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetListOfResources_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfResources" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetListOfResources_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfResourcesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -67,6 +73,10 @@
     <wsdl:operation name="GetMyFiles">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetMyFiles" message="tns:IMiniTorrentService_GetMyFiles_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetMyFilesResponse" message="tns:IMiniTorrentService_GetMyFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfResources">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetListOfResources" message="tns:IMiniTorrentService_GetListOfResources_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse" message="tns:IMiniTorrentService_GetListOfResources_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -118,6 +128,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMyFiles">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetMyFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfResources">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetListOfResources" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

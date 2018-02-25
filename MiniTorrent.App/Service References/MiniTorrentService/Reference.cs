@@ -238,6 +238,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetMyFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/GetMyFilesResponse")]
         System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> GetMyFilesAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetListOfResources", ReplyAction="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse")]
+        MiniTorrent.App.MiniTorrentService.User[] GetListOfResources(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetListOfResources", ReplyAction="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User[]> GetListOfResourcesAsync(string fileName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -313,6 +319,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.TransferFile[]> GetMyFilesAsync(string userName) {
             return base.Channel.GetMyFilesAsync(userName);
+        }
+        
+        public MiniTorrent.App.MiniTorrentService.User[] GetListOfResources(string fileName) {
+            return base.Channel.GetListOfResources(fileName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User[]> GetListOfResourcesAsync(string fileName) {
+            return base.Channel.GetListOfResourcesAsync(fileName);
         }
     }
 }
