@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MiniTorrent.App.AppLogic;
 using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
@@ -21,23 +22,26 @@ namespace MiniTorrent.App
     public partial class Window1 : Window
     {
         public User MyUser { get; set; }
+        private readonly UserLogic _userLogic;
 
         public Window1(User user)
         {
             InitializeComponent();
-
             MyUser = user;
-            var clinet = new MiniTorrentServiceClient();
-            clinet.LoginFlag(MyUser.UserName);
+            _userLogic = new UserLogic();
+            _userLogic.LoginFlagLogic(MyUser.UserName);
+            //var clinet = new MiniTorrentServiceClient();
+            //clinet.LoginFlag(MyUser.UserName);
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            var clinet = new MiniTorrentServiceClient();
-            clinet.LogoutFlag(MyUser.UserName);
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Hide();
+            _userLogic.LogoutFlagLogic(MyUser.UserName, this);
+            //var clinet = new MiniTorrentServiceClient();
+            //clinet.LogoutFlag(MyUser.UserName);
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
+            //this.Hide();
         }
         /**
          * search text box change - for search files

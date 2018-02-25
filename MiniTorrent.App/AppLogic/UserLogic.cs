@@ -15,7 +15,6 @@ namespace MiniTorrent.App.AppLogic
             var client = new MiniTorrentServiceClient();
             var user = client.Login(userName, password);
 
-            //if (checkLogIn(username, password))
             if (user != null)
             {
                 Window1 window1 = new Window1(user);
@@ -26,6 +25,21 @@ namespace MiniTorrent.App.AppLogic
             {
                 MessageBox.Show("Wrong username or password", "Error");
             }
+        }
+
+        public void LoginFlagLogic(string userName)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            clinet.LoginFlag(userName);
+        }
+
+        public void LogoutFlagLogic(string userName, Window window)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            clinet.LogoutFlag(userName);
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            window.Hide();
         }
     }
 }
