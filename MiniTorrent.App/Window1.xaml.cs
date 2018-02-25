@@ -23,12 +23,14 @@ namespace MiniTorrent.App
     {
         public User MyUser { get; set; }
         private readonly UserLogic _userLogic;
+        private readonly FileLogic _fileLogic;
 
         public Window1(User user)
         {
             InitializeComponent();
             MyUser = user;
             _userLogic = new UserLogic();
+            _fileLogic = new FileLogic();
             _userLogic.LoginFlagLogic(MyUser.UserName);
             //var clinet = new MiniTorrentServiceClient();
             //clinet.LoginFlag(MyUser.UserName);
@@ -54,16 +56,16 @@ namespace MiniTorrent.App
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName = SearchTextBox.Text;
-
-            var client = new MiniTorrentServiceClient();
-            var files = client.SearchFiles(fileName);
-            if (files.Length != 0)
-                SearchResaultListView.ItemsSource = files;
-            else
-            {
-                SearchResaultListView.ItemsSource = null;
-                MessageBox.Show("File not found", "Error");
-            }
+            _fileLogic.SearchButton_ClickLogic(fileName, SearchResaultListView);
+            //var client = new MiniTorrentServiceClient();
+            //var files = client.SearchFiles(fileName);
+            //if (files.Length != 0)
+            //    SearchResaultListView.ItemsSource = files;
+            //else
+            //{
+            //    SearchResaultListView.ItemsSource = null;
+            //    MessageBox.Show("File not found", "Error");
+            //}
         }
     }
 }
