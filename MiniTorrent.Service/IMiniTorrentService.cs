@@ -26,6 +26,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         void LoginFlag(string userName);
 
+        [OperationContract]
+        void LogoutFlag(string userName);
+
         // TODO: Add your service operations here
     }
 

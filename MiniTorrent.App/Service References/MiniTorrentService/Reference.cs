@@ -226,6 +226,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LoginFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LoginFlagResponse")]
         System.Threading.Tasks.Task LoginFlagAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LogoutFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LogoutFlagResponse")]
+        void LogoutFlag(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/LogoutFlag", ReplyAction="http://tempuri.org/IMiniTorrentService/LogoutFlagResponse")]
+        System.Threading.Tasks.Task LogoutFlagAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -285,6 +291,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task LoginFlagAsync(string userName) {
             return base.Channel.LoginFlagAsync(userName);
+        }
+        
+        public void LogoutFlag(string userName) {
+            base.Channel.LogoutFlag(userName);
+        }
+        
+        public System.Threading.Tasks.Task LogoutFlagAsync(string userName) {
+            return base.Channel.LogoutFlagAsync(userName);
         }
     }
 }

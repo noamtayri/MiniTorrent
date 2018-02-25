@@ -16,5 +16,10 @@ namespace MiniTorrent.Service.Domain
         {
             _miniTorrentProvider.LoginFlag(userName);
         }
+
+        public void LogoutFlag(string userName)
+        {
+            _miniTorrentProvider.LogoutFlag(userName);
+        }
     }
 }

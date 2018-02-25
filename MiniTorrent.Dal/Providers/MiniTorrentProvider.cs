@@ -90,5 +90,16 @@ namespace MiniTorrent.Dal.Providers
                 miniTorentDB.SubmitChanges();
             }
         }
+
+        public void LogoutFlag(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                var user = miniTorentDB.Users
+                    .FirstOrDefault(u => u.UserName.Equals(userName));
+                user.LogIn = false;
+                miniTorentDB.SubmitChanges();
+            }
+        }
     }
 }

@@ -36,5 +36,11 @@ namespace MiniTorrent.Service
             UserService userService = new UserService();
             userService.LoginFlag(userName);
         }
+
+        public void LogoutFlag(string userName)
+        {
+            UserService userService = new UserService();
+            userService.LogoutFlag(userName);
+        }
     }
 }

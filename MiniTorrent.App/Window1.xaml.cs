@@ -33,6 +33,8 @@ namespace MiniTorrent.App
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
+            var clinet = new MiniTorrentServiceClient();
+            clinet.LogoutFlag(MyUser.UserName);
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Hide();
