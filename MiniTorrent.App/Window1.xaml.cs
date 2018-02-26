@@ -27,7 +27,8 @@ namespace MiniTorrent.App
         private readonly UserLogic _userLogic;
         private readonly FileLogic _fileLogic;
         private DownloadLogic _downloadLogic;
-        private UploadLogic _uploadLogic; 
+        private UploadLogic _uploadLogic;
+        public TransferFile TempChoosedFile { get; set; }
 
         public Window1(User user)
         {
@@ -39,8 +40,8 @@ namespace MiniTorrent.App
             {
                 _uploadLogic = new UploadLogic();
                 _uploadLogic.MyUploadEvent += updateUploadTransferListView;
-                //_uploadLogic.UploadListener("C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent.App\\up");
-                _uploadLogic.UploadListener("");
+                _uploadLogic.UploadListener("C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\up");
+                //_uploadLogic.UploadListener("");
             }));
 
             _userLogic.LoginFlagLogic(MyUser.UserName);
@@ -75,7 +76,7 @@ namespace MiniTorrent.App
             else
             {
                 var file = SearchResaultListView.SelectedItem as TransferFile;
-
+                TempChoosedFile = file;
                 if (MyUser.OwnedFiles.Any(a => a.FileName.Equals(file?.FileName)))
                     MessageBox.Show("You already own that file", "Error");
                 else if (file.ResourcesNumber == 0)
@@ -84,8 +85,8 @@ namespace MiniTorrent.App
                 {
                     Task.Factory.StartNew((() =>
                     {
-                        //_downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent.App\\down");
-                        _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "");
+                        _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\down");
+                        //_downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "");
                         _downloadLogic.MyDownloadEvent += updateDownloadTransferListView;
                         _downloadLogic.Start();
                     }));                                       
@@ -111,12 +112,42 @@ namespace MiniTorrent.App
         {
             if (!isDone)
             {
-                TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
+                Dispatcher.BeginInvoke(new Action(delegate()
+                {
+                    //TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
+                    TransferFile newFile = TempChoosedFile;
+                    newFile.Status = info.Status;
+                    FileTransferListView.Items.Add(newFile);
+                    FileTransferListView.Items.Refresh();
+                }));
+                /*
+                //TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
+                TransferFile newFile = TempChoosedFile;
                 newFile.Status = info.Status;
                 FileTransferListView.Items.Add(newFile);
+                */
             }
             else
             {
+                Dispatcher.BeginInvoke(new Action(delegate()
+                {
+                    foreach (TransferFile line in FileTransferListView.Items)
+                    {
+                        if (line.FileName.Equals(info.FileName))
+                        {
+                            line.Status = info.Status;
+                            line.Time = info.Time;
+                            TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length + 1];
+                            for (int i = 0; i < MyUser.OwnedFiles.Length; i++)
+                                a[i] = MyUser.OwnedFiles[i];
+                            a[a.Length] = line;
+                            MyUser.OwnedFiles = a;
+                            //MyUser.OwnedFiles[MyUser.OwnedFiles.Length] = line;
+                        }
+                    }
+                    FileTransferListView.Items.Refresh();
+                }));
+                /*
                 foreach (TransferFile line in FileTransferListView.Items)
                 {
                     if (line.FileName.Equals(info.FileName))
@@ -131,7 +162,10 @@ namespace MiniTorrent.App
                         //MyUser.OwnedFiles[MyUser.OwnedFiles.Length] = line;
                     }
                 }
+                */
             }
+            TempChoosedFile = null;
+            
         }
     }
 }
