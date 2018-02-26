@@ -15,13 +15,12 @@ namespace MiniTorrent.App.AppLogic.Classes
         public string Time { get; set; }
         public int Kbps { get; set; }
 
-        public DownloadFileInfo(string fileName, long fileSize, string status, string time, int kbps)
+        public DownloadFileInfo(string fileName, long fileSize, string status, string time)
         {
             FileName = fileName;
             FileSize = fileSize;
             Status = status;
             Time = time;
-            Kbps = kbps;
         }
     }
 }

@@ -6,21 +6,27 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using MiniTorrent.App.AppLogic.Classes;
 
 namespace MiniTorrent.App.AppLogic
 {
+    public delegate void DownloadEvent(DownloadFileInfo info, bool isDone);
+
     public class DownloadLogic
     {
+        public DownloadEvent MyDownloadEvent;
+
         private byte[] downloadedBytes;
         private string fileName;
         private List<string> sourcesIP;
         private int fileSize;
         private string downloadFolderPath;
 
-        public DownloadLogic(string fileName, List<string> sourcesIP, int fileSize, string downloadFolderPath)
+        public DownloadLogic(string fileName, int fileSize, string downloadFolderPath)
         {
+            var client = new MiniTorrentServiceClient();
             this.fileName = fileName;
-            this.sourcesIP = sourcesIP;
+            this.sourcesIP = (List<string>)client.GetListOfResources(this.fileName).Select(u => u.IP);
             this.fileSize = fileSize;
             this.downloadFolderPath = downloadFolderPath;
         }
@@ -34,18 +40,34 @@ namespace MiniTorrent.App.AppLogic
 
             List<FractionData> fractions = new List<FractionData>();
             int fractionSize = fileSize / sourcesIP.Count;
-            int remainder = fileSize;
-            //int remainder = fileSize - (fractionSize * sourcesIP.Count);
+            //int remainder = fileSize;
+            int remainder = fileSize - (fractionSize * sourcesIP.Count);
 
-            
-            
-        }
+            DownloadFileInfo info = new DownloadFileInfo(this.fileName, this.fileSize, "in Downloading process", DateTime.Now.ToString());
 
-        private void GetResourcesLogic(string fileName)
-        {
-            var client = new MiniTorrentServiceClient();
-            var seeds = client.GetListOfResources(fileName);
-            Console.WriteLine("aa");
+            MyDownloadEvent(info, false);
+            FractionData fraction;
+            for (int i = 0; i < sourcesIP.Count-1; i++)
+            {
+                fraction = new FractionData(sourcesIP[i], fileName, fileSize, fractionSize * i, fractionSize);
+                fractions.Add(fraction);
+                fraction.DownTask.Start();
+            }
+            fraction = new FractionData(sourcesIP[sourcesIP.Count - 1], fileName, fileSize, fractionSize * (sourcesIP.Count - 1), remainder);
+            fractions.Add(fraction);
+            fraction.DownTask.Start();
+
+            for (int i = 0; i < fractions.Count; i++)
+            {
+                Task.WaitAll(fractions[i].DownTask);
+                fileStream.Write(fractions[i].RecvBytesArr, 0, fractions[i].RecvBytesArr.Length);
+                //fileStream.Write(fractions[i].RecvBytesArr, fractionSize * i, fractions[i].RecvBytesArr.Length);
+            }
+            fileStream.Close();
+            TimeSpan timeSpan = DateTime.Now - DateTime.Parse(info.Time);
+            info.Kbps = (int)(fileSize / timeSpan.TotalSeconds / 1000);
+            info.Status = "Download completed";
+            MyDownloadEvent(info, true);
         }
 
         public class FractionData
