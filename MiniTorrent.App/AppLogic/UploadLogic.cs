@@ -10,7 +10,7 @@ using MiniTorrent.App.AppLogic.Classes;
 
 namespace MiniTorrent.App.AppLogic
 {
-    public delegate void UploadEvent(UploadFileInfo info, bool isDone);
+    public delegate void UploadEvent(UploadFileInfo info);
 
     public class UploadLogic
     {
@@ -42,7 +42,7 @@ namespace MiniTorrent.App.AppLogic
             var fractionSize = streamReader.ReadLine();
 
             UploadFileInfo info = new UploadFileInfo(fileName, long.Parse(fileSize), "Uploading");
-            MyUploadEvent(info, false);
+            MyUploadEvent(info);
 
             byte[] uploadBytes = new byte[int.Parse(fractionSize)];
             bool finishRead = false;
@@ -63,8 +63,8 @@ namespace MiniTorrent.App.AppLogic
                     finishRead = false;
                 }
             }
-            info.Status = "Upload complete";
-            MyUploadEvent(info, true);
+            info.Status = "Upload waiting";
+            MyUploadEvent(info);
         }
     }
 }

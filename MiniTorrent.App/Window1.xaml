@@ -22,10 +22,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="file name" Width="210" DisplayMemberBinding="{Binding FileName}"/>
-                    <GridViewColumn Header="download/upload" Width="110"/>
+                    <GridViewColumn Header="status" Width="110" DisplayMemberBinding="{Binding Status}"/>
                     <GridViewColumn Header="size" Width="100" DisplayMemberBinding="{Binding FileSize}"/>
                     <GridViewColumn Header="resources" Width="70" DisplayMemberBinding="{Binding ResourcesNumber}"/>
-                    <GridViewColumn Header="time" Width="120"/>
+                    <GridViewColumn Header="time" Width="120" DisplayMemberBinding="{Binding Time}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -21,6 +21,8 @@
       <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileSize" type="xs:int" />
       <xs:element minOccurs="0" name="ResourcesNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TransferFile" nillable="true" type="tns:TransferFile" />

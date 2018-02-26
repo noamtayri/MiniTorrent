@@ -57,8 +57,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppLogic\Classes\DownloadFileInfo.cs" />
+    <Compile Include="AppLogic\Classes\UploadFileInfo.cs" />
     <Compile Include="AppLogic\FileLogic.cs" />
-    <Compile Include="AppLogic\TransferLogic.cs" />
+    <Compile Include="AppLogic\DownloadLogic.cs" />
+    <Compile Include="AppLogic\UploadLogic.cs" />
     <Compile Include="AppLogic\UserLogic.cs" />
     <Compile Include="Service References\MiniTorrentService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -155,6 +158,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

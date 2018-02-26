@@ -140,6 +140,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourcesNumberField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -185,6 +191,32 @@ namespace MiniTorrent.App.MiniTorrentService {
                 if ((this.ResourcesNumberField.Equals(value) != true)) {
                     this.ResourcesNumberField = value;
                     this.RaisePropertyChanged("ResourcesNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimeField, value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
                 }
             }
         }

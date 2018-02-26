@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MiniTorrent.App.AppLogic;
+using MiniTorrent.App.AppLogic.Classes;
 using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
@@ -24,7 +26,8 @@ namespace MiniTorrent.App
         public User MyUser { get; set; }
         private readonly UserLogic _userLogic;
         private readonly FileLogic _fileLogic;
-        private readonly DownloadLogic _downloadLogic;
+        private DownloadLogic _downloadLogic;
+        private UploadLogic _uploadLogic; 
 
         public Window1(User user)
         {
@@ -32,7 +35,13 @@ namespace MiniTorrent.App
             MyUser = user;
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
-            _downloadLogic = new DownloadLogic();
+            Task.Factory.StartNew((() =>
+            {
+                _uploadLogic = new UploadLogic();
+                _uploadLogic.MyUploadEvent += null;//add method
+                _uploadLogic.UploadListener("");
+            }));
+
             _userLogic.LoginFlagLogic(MyUser.UserName);
             _userLogic.RetrieveUserFilesLogic(MyUser);
         }
@@ -67,10 +76,57 @@ namespace MiniTorrent.App
 
                 if (MyUser.OwnedFiles.Any(a => a.FileName.Equals(file?.FileName)))
                     MessageBox.Show("You already own that file", "Error");
+                else if (file.ResourcesNumber == 0)
+                    MessageBox.Show("No resources for this file", "Error");
                 else
                 {
-                    //_downloadLogic.GetResourcesLogic(file?.FileName);
+                    Task.Factory.StartNew((() =>
+                    {
+                        _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "");
+                        _downloadLogic.MyDownloadEvent += null;
+                        _downloadLogic.Start();
+                    }));                                       
+                }
+            }
+        }
 
+        private void updateUploadTransferListView(UploadFileInfo info)
+        {
+            Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                foreach (TransferFile line in FileTransferListView.Items)
+                {
+                    if (line.FileName.Equals(info.FileName))
+                        break;
+                        line.Status = info.Status;
+                }
+                FileTransferListView.Items.Refresh();
+            }));        
+        }
+
+        private void updateDownloadTransferListView(DownloadFileInfo info, bool isDone)
+        {
+            if (!isDone)
+            {
+                TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
+                newFile.Status = info.Status;
+                FileTransferListView.Items.Add(newFile);
+            }
+            else
+            {
+                foreach (TransferFile line in FileTransferListView.Items)
+                {
+                    if (line.FileName.Equals(info.FileName))
+                    {
+                        line.Status = info.Status;
+                        line.Time = info.Time;
+                        TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length+1];
+                        for (int i = 0; i < MyUser.OwnedFiles.Length; i++)
+                            a[i] = MyUser.OwnedFiles[i];
+                        a[a.Length] = line;
+                        MyUser.OwnedFiles = a;
+                        //MyUser.OwnedFiles[MyUser.OwnedFiles.Length] = line;
+                    }
                 }
             }
         }

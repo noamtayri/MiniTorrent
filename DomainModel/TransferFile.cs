@@ -11,5 +11,7 @@ namespace DomainModel
         public string FileName { get; set; }
         public int FileSize { get; set; }
         public int ResourcesNumber { get; set; }
+        public string Status { get; set; }
+        public string Time { get; set; }
     }
 }
