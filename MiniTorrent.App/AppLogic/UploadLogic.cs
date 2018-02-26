@@ -27,7 +27,7 @@ namespace MiniTorrent.App.AppLogic
             while (true)
             {
                 TcpClient tcpClient = tcpListener.AcceptTcpClient();
-                //Task.Factory.StartNew((() => ));
+                Task.Factory.StartNew((() => uploadFile(tcpClient)));
             }
         }
 
