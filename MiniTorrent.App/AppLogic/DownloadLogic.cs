@@ -36,8 +36,9 @@ namespace MiniTorrent.App.AppLogic
             int fractionSize = fileSize / sourcesIP.Count;
             int remainder = fileSize;
             //int remainder = fileSize - (fractionSize * sourcesIP.Count);
-            
 
+            
+            
         }
 
         private void GetResourcesLogic(string fileName)
