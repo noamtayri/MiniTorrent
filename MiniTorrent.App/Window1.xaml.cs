@@ -38,7 +38,8 @@ namespace MiniTorrent.App
             Task.Factory.StartNew((() =>
             {
                 _uploadLogic = new UploadLogic();
-                _uploadLogic.MyUploadEvent += null;//add method
+                _uploadLogic.MyUploadEvent += updateUploadTransferListView;
+                //_uploadLogic.UploadListener("C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent.App\\up");
                 _uploadLogic.UploadListener("");
             }));
 
@@ -48,6 +49,7 @@ namespace MiniTorrent.App
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
+
             _userLogic.LogoutFlagLogic(MyUser.UserName, this);
         }
         /**
@@ -82,8 +84,9 @@ namespace MiniTorrent.App
                 {
                     Task.Factory.StartNew((() =>
                     {
+                        //_downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent.App\\down");
                         _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "");
-                        _downloadLogic.MyDownloadEvent += null;
+                        _downloadLogic.MyDownloadEvent += updateDownloadTransferListView;
                         _downloadLogic.Start();
                     }));                                       
                 }

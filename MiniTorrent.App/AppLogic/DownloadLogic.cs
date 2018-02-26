@@ -26,7 +26,8 @@ namespace MiniTorrent.App.AppLogic
         {
             var client = new MiniTorrentServiceClient();
             this.fileName = fileName;
-            this.sourcesIP = (List<string>)client.GetListOfResources(this.fileName).Select(u => u.IP);
+            //this.sourcesIP = (List<string>)client.GetListOfResources(this.fileName).Select(u => u.IP);
+            this.sourcesIP = client.GetListOfResources(fileName).ToList();
             this.fileSize = fileSize;
             this.downloadFolderPath = downloadFolderPath;
         }

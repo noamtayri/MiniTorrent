@@ -17,9 +17,16 @@ namespace MiniTorrent.Service.Domain
             _miniTorrentProvider = new MiniTorrentProvider();
         }
 
-        public List<User> GetListOfResources(string fileName)
+        public List<string> GetListOfResources(string fileName)
         {
             return _miniTorrentProvider.GetListOfResources(fileName);
         }
+
+        /*
+        public List<User> GetListOfResources(string fileName)
+        {
+            return _miniTorrentProvider.GetListOfResources(fileName);
+        }*/
     }
 }
+ 

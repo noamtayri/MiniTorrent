@@ -17,7 +17,7 @@ namespace MiniTorrent.App.AppLogic
         public UploadEvent MyUploadEvent;
 
         private string uploadFolderPath;
-        private static int port = 8005;
+        private static int port = 8006;
 
         public void UploadListener(string uploadFolderPath)
         {

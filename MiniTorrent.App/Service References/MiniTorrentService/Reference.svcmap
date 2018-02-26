@@ -23,10 +23,11 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="MiniTorrentService.xsd" MetadataType="Schema" ID="2971b565-b6f6-4cc0-84f4-4824bae22967" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd1" />
-    <MetadataFile FileName="MiniTorrentService.wsdl" MetadataType="Wsdl" ID="ad69ab98-a866-456e-8541-bdc3deb7ae8c" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?wsdl" />
     <MetadataFile FileName="MiniTorrentService.disco" MetadataType="Disco" ID="5474146c-1eff-447f-ac2e-bd319377a867" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?disco" />
-    <MetadataFile FileName="MiniTorrentService1.xsd" MetadataType="Schema" ID="a40493c0-6548-43aa-868a-a43ac6770f8d" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd0" />
     <MetadataFile FileName="MiniTorrentService2.xsd" MetadataType="Schema" ID="4e1ddf72-6b17-4a8c-b4bc-82dba2c4c95d" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MiniTorrentService3.xsd" MetadataType="Schema" ID="93b07f9d-10e2-4228-8f2f-66f89f2a8596" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MiniTorrentService1.xsd" MetadataType="Schema" ID="a40493c0-6548-43aa-868a-a43ac6770f8d" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MiniTorrentService.wsdl" MetadataType="Wsdl" ID="ad69ab98-a866-456e-8541-bdc3deb7ae8c" SourceId="1" SourceUrl="http://localhost:61345/MiniTorrentService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

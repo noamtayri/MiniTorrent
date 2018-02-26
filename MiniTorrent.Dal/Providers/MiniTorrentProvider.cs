@@ -89,7 +89,18 @@ namespace MiniTorrent.Dal.Providers
             }
         }
 
-        public List<DomainModel.User> GetListOfResources(string fileName)
+        public List<string> GetListOfResources(string fileName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                return miniTorentDB.UsersTransferFiles
+                    .Where(f => f.TransferFile.FileName.Equals(fileName) && f.User.LogIn.Equals(true))
+                    .Select(u => u.User.IP)
+                    .ToList();
+            }        
+        }
+        /*
+         public List<DomainModel.User> GetListOfResources(string fileName)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
@@ -98,6 +109,6 @@ namespace MiniTorrent.Dal.Providers
                     .Select(u => new DomainModel.User {Port = u.User.PORT.GetValueOrDefault(), IP = u.User.IP})
                     .ToList();
             }        
-        }
+        }*/
     }
 }
