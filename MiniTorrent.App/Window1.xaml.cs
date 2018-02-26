@@ -24,7 +24,7 @@ namespace MiniTorrent.App
         public User MyUser { get; set; }
         private readonly UserLogic _userLogic;
         private readonly FileLogic _fileLogic;
-        private readonly TransferLogic _transferLogic;
+        private readonly DownloadLogic _downloadLogic;
 
         public Window1(User user)
         {
@@ -32,7 +32,7 @@ namespace MiniTorrent.App
             MyUser = user;
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
-            _transferLogic = new TransferLogic();
+            _downloadLogic = new DownloadLogic();
             _userLogic.LoginFlagLogic(MyUser.UserName);
             _userLogic.RetrieveUserFilesLogic(MyUser);
         }
@@ -69,7 +69,8 @@ namespace MiniTorrent.App
                     MessageBox.Show("You already own that file", "Error");
                 else
                 {
-                    _transferLogic.DownloadLogic(file?.FileName);
+                    //_downloadLogic.GetResourcesLogic(file?.FileName);
+
                 }
             }
         }
