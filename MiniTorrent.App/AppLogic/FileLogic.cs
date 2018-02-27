@@ -24,5 +24,12 @@ namespace MiniTorrent.App.AppLogic
                 MessageBox.Show("File not found", "Error");
             }
         }
+
+        public void CopyFileByPaths(string fileName, string from, string to)
+        {
+            string sourceFilePath = System.IO.Path.Combine(from, fileName);
+            string destFilePath = System.IO.Path.Combine(to, fileName);
+            System.IO.File.Copy(sourceFilePath, destFilePath, true);
+        }
     }
 }

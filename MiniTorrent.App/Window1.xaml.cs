@@ -132,9 +132,7 @@ namespace MiniTorrent.App
                             line.Status = info.Status;
                             line.Time = info.Time;
                             _userLogic.UpdateUserTransferFilesLogic(line.FileName, MyUser.UserName);
-                            //
-                            //move the file to up folder
-                            //
+                            _fileLogic.CopyFileByPaths(line.FileName, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\down", "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\up");
                         }
                     }
                     FileTransferListView.Items.Refresh();
