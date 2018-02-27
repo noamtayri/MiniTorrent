@@ -15,8 +15,8 @@
         <TextBox x:Name="ConfigDownTextBox" HorizontalAlignment="Left" Height="23" Margin="34,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
         <TextBox x:Name="ConfigUpTextBox" HorizontalAlignment="Left" Height="23" Margin="34,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
         <PasswordBox x:Name="ConfigPasswordBox" HorizontalAlignment="Left" Height="23" Margin="34,99,0,0" VerticalAlignment="Top" Width="184"/>
-        <Button x:Name="SaveButton" Content="Save Changes" HorizontalAlignment="Left" Margin="34,235,0,0" VerticalAlignment="Top" Width="89"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="181,235,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="SaveButton" Content="Save Changes" HorizontalAlignment="Left" Margin="34,235,0,0" VerticalAlignment="Top" Width="89" Click="SaveButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="181,235,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
 
     </Grid>
 </Window>
