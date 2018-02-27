@@ -282,6 +282,12 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserFilesResponse")]
         System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
+        void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
+        System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -373,6 +379,14 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName) {
             return base.Channel.UpdateUserFilesAsync(fileName, userName);
+        }
+        
+        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
+            base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
+        }
+        
+        public System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
+            return base.Channel.UpdateUserDetailsAsync(oldUserName, newUserName, password, ip, port);
         }
     }
 }

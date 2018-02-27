@@ -59,10 +59,14 @@
     </ApplicationDefinition>
     <Compile Include="AppLogic\Classes\DownloadFileInfo.cs" />
     <Compile Include="AppLogic\Classes\UploadFileInfo.cs" />
+    <Compile Include="AppLogic\ConfigLogic.cs" />
     <Compile Include="AppLogic\FileLogic.cs" />
     <Compile Include="AppLogic\DownloadLogic.cs" />
     <Compile Include="AppLogic\UploadLogic.cs" />
     <Compile Include="AppLogic\UserLogic.cs" />
+    <Compile Include="EditMyConfigWindow.xaml.cs">
+      <DependentUpon>EditMyConfigWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MiniTorrentService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +75,10 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditMyConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

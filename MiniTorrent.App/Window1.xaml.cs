@@ -28,12 +28,14 @@ namespace MiniTorrent.App
         private readonly FileLogic _fileLogic;
         private DownloadLogic _downloadLogic;
         private UploadLogic _uploadLogic;
+        private Window mainWindow;
         public TransferFile TempChoosedFile { get; set; }
 
-        public Window1(User user)
+        public Window1(User user, Window mainWindow)
         {
             InitializeComponent();
             MyUser = user;
+            this.mainWindow = mainWindow;
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
             Task.Factory.StartNew((() =>
@@ -50,7 +52,7 @@ namespace MiniTorrent.App
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             _uploadLogic.StopListener();
-            _userLogic.LogoutFlagLogic(MyUser.UserName, this);
+            _userLogic.LogoutFlagLogic(MyUser.UserName, this, mainWindow);
         }
         /**
          * search text box change - for search files
@@ -140,6 +142,13 @@ namespace MiniTorrent.App
             }
             TempChoosedFile = null;
             
+        }
+
+        private void ConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditMyConfigWindow editWindow = new EditMyConfigWindow(this, MyUser);
+            editWindow.Show();
+            this.Hide();
         }
     }
 }

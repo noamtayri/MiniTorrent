@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml;
+using MiniTorrent.App.AppLogic;
+using MiniTorrent.App.MiniTorrentService;
 
 namespace MiniTorrent.App
 {
@@ -24,50 +26,56 @@ namespace MiniTorrent.App
     public partial class EditMyConfigWindow : Window
     {
         private Window window;
+        private User oldUser;
+        private ConfigLogic userFromConfig;
 
-        public EditMyConfigWindow(Window window)
+        public EditMyConfigWindow(Window window, User myUser)
         {
             InitializeComponent();
             this.window = window;
+            oldUser = myUser;
             if (File.Exists("MyConfig.xml"))
             {
-                readXmlFile("MyConfig.xml");
+                userFromConfig = new ConfigLogic();
+                readXmlFile("MyConfig.xml", userFromConfig);
+                setUserDetailsInTextBoxes(userFromConfig);
             }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            writeXmlFile("MyConfig.xml");
-
+            ConfigLogic userFromTextBox = new ConfigLogic(ConfigUsernameTextBox.Text, ConfigPasswordBox.Password, "downloads", "uploads", getMyIp(), "8005");
+            writeXmlFile("MyConfig.xml", userFromTextBox);
+            var client = new MiniTorrentServiceClient();
+            client.UpdateUserDetails(oldUser.UserName, userFromTextBox.UserName, userFromTextBox.Password, getMyIp(), userFromTextBox.Port);
             window.Show();
             this.Close();
         }
 
-        private void writeXmlFile(string filePath)
+        public static void writeXmlFile(string filePath, ConfigLogic newUser)
         {
-            //XmlWriterSettings xmlSettings = new XmlWriterSettings();
-            //xmlSettings.Indent = true;
-            //xmlSettings.IndentChars = "\t";
-
+            XmlWriterSettings xmlSettings = new XmlWriterSettings();
+            xmlSettings.Indent = true;
+            xmlSettings.IndentChars = "\t";
             using (XmlWriter writer = XmlWriter.Create(filePath))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Client");
 
                 writer.WriteStartElement("UserName");
-                writer.WriteString(ConfigUsernameTextBox.Text);
+                writer.WriteString(newUser.UserName);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Password");
-                writer.WriteString(ConfigPasswordBox.Password);
+                writer.WriteString(newUser.Password);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("DownloadPath");
-                writer.WriteString(ConfigDownTextBox.Text);
+                writer.WriteString(newUser.DownloadFolderPath);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("UploadPath");
-                writer.WriteString(ConfigUpTextBox.Text);
+                writer.WriteString(newUser.UploadFolderPath);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Ip");
@@ -75,16 +83,15 @@ namespace MiniTorrent.App
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("Port");
-                writer.WriteString("8005");
+                writer.WriteString(newUser.Port);
                 writer.WriteEndElement();
 
                 writer.WriteEndDocument();
                 writer.Close();
-
             }
         }
 
-        private void readXmlFile(string filePath)
+        public static void readXmlFile(string filePath, ConfigLogic newUser)
         {
             XmlTextReader reader = new XmlTextReader(filePath);
             while (reader.Read())
@@ -95,33 +102,48 @@ namespace MiniTorrent.App
                     {
                         case "UserName":
                             reader.Read();
-                            ConfigUsernameTextBox.Text = reader.Value;
+                            newUser.UserName = reader.Value;
                             break;
 
                         case "Password":
                             reader.Read();
-                            ConfigPasswordBox.Password = reader.Value;
+                            newUser.Password = reader.Value;
                             break;
                             
                         case "DownloadPath":
                             reader.Read();
-                            ConfigDownTextBox.Text = reader.Value;
+                            newUser.DownloadFolderPath = reader.Value;
                             break;
 
                         case "UploadPath":
                             reader.Read();
-                            ConfigUpTextBox.Text = reader.Value;
+                            newUser.UploadFolderPath = reader.Value;
                             break;
 
+                        case "Port":
+                            reader.Read();
+                            newUser.Port = reader.Value;
+                            break;
                         default:
                             break;
                     }
                 }
             }
             reader.Close();
+            newUser.IpAddress = getMyIp();
         }
 
-        private string getMyIp()
+        private void setUserDetailsInTextBoxes(ConfigLogic user)
+        {
+            ConfigUsernameTextBox.Text = user.UserName;
+            ConfigPasswordBox.Password = user.Password;
+            ConfigDownTextBox.Text = user.DownloadFolderPath;
+            ConfigUpTextBox.Text = user.UploadFolderPath;
+            ConfigIPTextBox.Text = user.IpAddress;
+            ConfigPortTextBox.Text = user.Port;
+        }
+
+        public static string getMyIp()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)

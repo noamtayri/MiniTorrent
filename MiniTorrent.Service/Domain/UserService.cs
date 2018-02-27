@@ -32,5 +32,10 @@ namespace MiniTorrent.Service.Domain
         {
             _miniTorrentProvider.UpdateUserTransferFiles(fileName, userName);
         }
+
+        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port)
+        {
+            _miniTorrentProvider.SetUserDetails(oldUserName, newUserName, password, ip, port);
+        }
     }
 }

@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniTorrent.App"
         mc:Ignorable="d"
-        Title="EditMyConfigWindow" Height="300" Width="300">
+        Title="EditMyConfigWindow" Height="400" Width="300">
     <Grid>
         <Label x:Name="ConfigUsernameLabel" Content="Username:" HorizontalAlignment="Left" Margin="28,23,0,0" VerticalAlignment="Top"/>
         <Label x:Name="ConfigPasswordLabel" Content="Password:" HorizontalAlignment="Left" Margin="28,73,0,0" VerticalAlignment="Top"/>
         <Label x:Name="ConfigDownLabel" Content="Download folder:" HorizontalAlignment="Left" Margin="28,122,0,0" VerticalAlignment="Top"/>
         <Label x:Name="ConfigUpLabel" Content="Upload folder:" HorizontalAlignment="Left" Margin="28,171,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="ConfigUsernameTextBox" HorizontalAlignment="Left" Height="23" Margin="34,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBox x:Name="ConfigDownTextBox" HorizontalAlignment="Left" Height="23" Margin="34,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <TextBox x:Name="ConfigUpTextBox" HorizontalAlignment="Left" Height="23" Margin="34,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
-        <PasswordBox x:Name="ConfigPasswordBox" HorizontalAlignment="Left" Height="23" Margin="34,99,0,0" VerticalAlignment="Top" Width="184"/>
-        <Button x:Name="SaveButton" Content="Save Changes" HorizontalAlignment="Left" Margin="34,235,0,0" VerticalAlignment="Top" Width="89" Click="SaveButton_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="181,235,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
+        <TextBox x:Name="ConfigUsernameTextBox" HorizontalAlignment="Left" Height="23" Margin="34,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" TabIndex="0"/>
+        <TextBox x:Name="ConfigDownTextBox" HorizontalAlignment="Left" Height="23" Margin="34,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" TabIndex="2"/>
+        <TextBox x:Name="ConfigUpTextBox" HorizontalAlignment="Left" Height="23" Margin="34,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" TabIndex="3"/>
+        <PasswordBox x:Name="ConfigPasswordBox" HorizontalAlignment="Left" Height="23" Margin="34,99,0,0" VerticalAlignment="Top" Width="184" TabIndex="1"/>
+        <Button x:Name="SaveButton" Content="Save Changes" HorizontalAlignment="Left" Margin="14,334,0,0" VerticalAlignment="Top" Width="89" Click="SaveButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="178,334,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
+        <Label x:Name="ConfigIpLabel" Content="IP Address:" HorizontalAlignment="Left" Margin="28,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ConfigPortLabel" Content="Port:" HorizontalAlignment="Left" Margin="28,267,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ConfigIPTextBox" HorizontalAlignment="Left" Height="23" Margin="34,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" IsReadOnly="True" IsEnabled="False"/>
+        <TextBox x:Name="ConfigPortTextBox" HorizontalAlignment="Left" Height="23" Margin="34,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184" IsReadOnly="True" IsEnabled="False"/>
 
     </Grid>
 </Window>
