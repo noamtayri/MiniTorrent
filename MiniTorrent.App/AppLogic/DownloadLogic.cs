@@ -44,7 +44,7 @@ namespace MiniTorrent.App.AppLogic
             //int remainder = fileSize;
             int remainder = fileSize - (fractionSize * (sourcesIP.Count-1));
 
-            DownloadFileInfo info = new DownloadFileInfo(this.fileName, this.fileSize, "in Downloading process", DateTime.Now.ToString());
+            DownloadFileInfo info = new DownloadFileInfo(this.fileName, this.fileSize, "Downloading", DateTime.Now.ToString());
 
             MyDownloadEvent(info, false);
             FractionData fraction;
@@ -66,6 +66,7 @@ namespace MiniTorrent.App.AppLogic
             }
             fileStream.Close();
             TimeSpan timeSpan = DateTime.Now - DateTime.Parse(info.Time);
+            info.Time = String.Format("{0:hh\\:mm\\:ss}",timeSpan);
             info.Kbps = (int)(fileSize / timeSpan.TotalSeconds / 1000);
             info.Status = "Download completed";
             MyDownloadEvent(info, true);

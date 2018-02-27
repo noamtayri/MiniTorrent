@@ -43,7 +43,7 @@ namespace MiniTorrent.App
                 _uploadLogic.UploadListener("C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\up");
                 //_uploadLogic.UploadListener("");
             }));
-
+            _userLogic.RetrieveUserFilesLogic(MyUser, FileTransferListView);
             _userLogic.LoginFlagLogic(MyUser.UserName);
         }
 
@@ -132,11 +132,9 @@ namespace MiniTorrent.App
                             line.Status = info.Status;
                             line.Time = info.Time;
                             _userLogic.UpdateUserTransferFilesLogic(line.FileName, MyUser.UserName);
-                            //TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length + 1];
-                            //for (int i = 0; i < MyUser.OwnedFiles.Length-2; i++)
-                            //    a[i] = MyUser.OwnedFiles[i];
-                            //a[a.Length-2] = line;
-                            //MyUser.OwnedFiles = a;
+                            //
+                            //move the file to up folder
+                            //
                         }
                     }
                     FileTransferListView.Items.Refresh();

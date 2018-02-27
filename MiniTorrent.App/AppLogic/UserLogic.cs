@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MiniTorrent.App.MiniTorrentService;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MiniTorrent.App.AppLogic
 {
@@ -46,6 +47,17 @@ namespace MiniTorrent.App.AppLogic
         {
             var clinet = new MiniTorrentServiceClient();
             user.OwnedFiles = clinet.GetMyFiles(user.UserName);
+        }
+
+        public void RetrieveUserFilesLogic(User user, ListView view)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            user.OwnedFiles = clinet.GetMyFiles(user.UserName);
+            foreach (var file in user.OwnedFiles)
+            {
+                file.Status = "Upload waiting";
+                view.Items.Add(file);
+            }
         }
 
         public void UpdateUserTransferFilesLogic(string fileName, string userName)
