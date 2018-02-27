@@ -45,7 +45,6 @@ namespace MiniTorrent.App
             }));
 
             _userLogic.LoginFlagLogic(MyUser.UserName);
-            _userLogic.RetrieveUserFilesLogic(MyUser);
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
@@ -77,6 +76,7 @@ namespace MiniTorrent.App
             {
                 var file = SearchResaultListView.SelectedItem as TransferFile;
                 TempChoosedFile = file;
+                _userLogic.RetrieveUserFilesLogic(MyUser);
                 if (MyUser.OwnedFiles.Any(a => a.FileName.Equals(file?.FileName)))
                     MessageBox.Show("You already own that file", "Error");
                 else if (file.ResourcesNumber == 0)
@@ -112,20 +112,14 @@ namespace MiniTorrent.App
         {
             if (!isDone)
             {
+                TransferFile newFile = new TransferFile();
+                newFile = TempChoosedFile;
                 Dispatcher.BeginInvoke(new Action(delegate()
                 {
-                    //TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
-                    TransferFile newFile = TempChoosedFile;
                     newFile.Status = info.Status;
                     FileTransferListView.Items.Add(newFile);
                     FileTransferListView.Items.Refresh();
                 }));
-                /*
-                //TransferFile newFile = SearchResaultListView.SelectedItem as TransferFile;
-                TransferFile newFile = TempChoosedFile;
-                newFile.Status = info.Status;
-                FileTransferListView.Items.Add(newFile);
-                */
             }
             else
             {
@@ -137,32 +131,16 @@ namespace MiniTorrent.App
                         {
                             line.Status = info.Status;
                             line.Time = info.Time;
-                            TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length + 1];
-                            for (int i = 0; i < MyUser.OwnedFiles.Length; i++)
-                                a[i] = MyUser.OwnedFiles[i];
-                            a[a.Length] = line;
-                            MyUser.OwnedFiles = a;
-                            //MyUser.OwnedFiles[MyUser.OwnedFiles.Length] = line;
+                            _userLogic.UpdateUserTransferFilesLogic(line.FileName, MyUser.UserName);
+                            //TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length + 1];
+                            //for (int i = 0; i < MyUser.OwnedFiles.Length-2; i++)
+                            //    a[i] = MyUser.OwnedFiles[i];
+                            //a[a.Length-2] = line;
+                            //MyUser.OwnedFiles = a;
                         }
                     }
                     FileTransferListView.Items.Refresh();
                 }));
-                /*
-                foreach (TransferFile line in FileTransferListView.Items)
-                {
-                    if (line.FileName.Equals(info.FileName))
-                    {
-                        line.Status = info.Status;
-                        line.Time = info.Time;
-                        TransferFile[] a = new TransferFile[MyUser.OwnedFiles.Length+1];
-                        for (int i = 0; i < MyUser.OwnedFiles.Length; i++)
-                            a[i] = MyUser.OwnedFiles[i];
-                        a[a.Length] = line;
-                        MyUser.OwnedFiles = a;
-                        //MyUser.OwnedFiles[MyUser.OwnedFiles.Length] = line;
-                    }
-                }
-                */
             }
             TempChoosedFile = null;
             

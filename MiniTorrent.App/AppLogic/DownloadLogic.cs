@@ -46,7 +46,7 @@ namespace MiniTorrent.App.AppLogic
 
             DownloadFileInfo info = new DownloadFileInfo(this.fileName, this.fileSize, "in Downloading process", DateTime.Now.ToString());
 
-            //MyDownloadEvent(info, false);
+            MyDownloadEvent(info, false);
             FractionData fraction;
             for (int i = 0; i < sourcesIP.Count-1; i++)
             {
@@ -68,7 +68,7 @@ namespace MiniTorrent.App.AppLogic
             TimeSpan timeSpan = DateTime.Now - DateTime.Parse(info.Time);
             info.Kbps = (int)(fileSize / timeSpan.TotalSeconds / 1000);
             info.Status = "Download completed";
-            //MyDownloadEvent(info, true);
+            MyDownloadEvent(info, true);
         }
 
         public class FractionData

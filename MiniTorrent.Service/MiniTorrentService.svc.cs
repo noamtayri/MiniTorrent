@@ -54,6 +54,13 @@ namespace MiniTorrent.Service
             SeedersService seedersService = new SeedersService();
             return seedersService.GetListOfResources(fileName);
         }
+
+        public void UpdateUserFiles(string fileName, string userName)
+        {
+            UserService userService = new UserService();
+            userService.UpdateUserFiles(fileName, userName);
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {

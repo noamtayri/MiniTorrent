@@ -58,7 +58,7 @@ namespace MiniTorrent.App.AppLogic
             var fractionSize = streamReader.ReadLine();
 
             UploadFileInfo info = new UploadFileInfo(fileName, long.Parse(fileSize), "Uploading");
-            //MyUploadEvent(info);
+            MyUploadEvent(info);
 
             byte[] uploadBytes = new byte[int.Parse(fractionSize)];
             bool finishRead = false;
@@ -80,7 +80,7 @@ namespace MiniTorrent.App.AppLogic
                 }
             }
             info.Status = "Upload waiting";
-            //MyUploadEvent(info);
+            MyUploadEvent(info);
         }
     }
 }

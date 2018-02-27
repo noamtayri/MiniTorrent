@@ -47,5 +47,11 @@ namespace MiniTorrent.App.AppLogic
             var clinet = new MiniTorrentServiceClient();
             user.OwnedFiles = clinet.GetMyFiles(user.UserName);
         }
+
+        public void UpdateUserTransferFilesLogic(string fileName, string userName)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            clinet.UpdateUserFiles(fileName, userName);
+        }
     }
 }

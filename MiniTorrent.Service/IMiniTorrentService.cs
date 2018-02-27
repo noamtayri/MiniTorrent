@@ -35,10 +35,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         List<string> GetListOfResources(string fileName);
 
-        /*
         [OperationContract]
-        List<User> GetListOfResources(string fileName);
-        */
+        void UpdateUserFiles(string fileName, string userName);
+
         // TODO: Add your service operations here
     }
 

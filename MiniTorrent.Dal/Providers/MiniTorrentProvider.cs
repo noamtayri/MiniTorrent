@@ -9,7 +9,7 @@ namespace MiniTorrent.Dal.Providers
 {
     public class MiniTorrentProvider
     {
-        public DomainModel.User  GetUser(string userName)
+        public DomainModel.User GetUser(string userName)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
@@ -99,16 +99,26 @@ namespace MiniTorrent.Dal.Providers
                     .ToList();
             }        
         }
-        /*
-         public List<DomainModel.User> GetListOfResources(string fileName)
+
+        public void UpdateUserTransferFiles(string fileName, string userName)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
-                return miniTorentDB.UsersTransferFiles
-                    .Where(f => f.TransferFile.FileName.Equals(fileName) && f.User.LogIn.Equals(true))
-                    .Select(u => new DomainModel.User {Port = u.User.PORT.GetValueOrDefault(), IP = u.User.IP})
-                    .ToList();
-            }        
-        }*/
+                var userId = miniTorentDB.Users
+                    .Where(u => u.UserName.Equals(userName))
+                    .Select(u => u.ID)
+                    .FirstOrDefault();
+                var fileId = miniTorentDB.TransferFiles
+                    .Where(f => f.FileName.Equals(fileName))
+                    .Select(f => f.ID)
+                    .FirstOrDefault();
+
+                var a = new UsersTransferFile();
+                a.UserID = userId;
+                a.TransferFileID = fileId;
+                miniTorentDB.UsersTransferFiles.InsertOnSubmit(a);
+                miniTorentDB.SubmitChanges();
+            }
+        }
     }
 }

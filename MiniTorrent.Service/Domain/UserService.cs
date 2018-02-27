@@ -27,5 +27,10 @@ namespace MiniTorrent.Service.Domain
         {
             return _miniTorrentProvider.GetMyFiles(userName);
         }
+
+        public void UpdateUserFiles(string fileName, string userName)
+        {
+            _miniTorrentProvider.UpdateUserTransferFiles(fileName, userName);
+        }
     }
 }
