@@ -11,6 +11,11 @@ namespace MiniTorrent.App.AppLogic
 {
     public class UserLogic
     {
+        public void CheckLoginByConfig(Window window)
+        {
+            
+        }
+
         public void LoginButton_ClickLogic(string userName, string password, Window window)
         {
             var client = new MiniTorrentServiceClient();
