@@ -18,17 +18,33 @@ namespace MiniTorrent.App.AppLogic
 
         private string uploadFolderPath;
         private static int port = 8005;
+        private bool flag = true;
 
         public void UploadListener(string uploadFolderPath)
         {
+            flag = true;
             this.uploadFolderPath = uploadFolderPath;
             TcpListener tcpListener = new TcpListener(IPAddress.Any, port);
             tcpListener.Start();
-            while (true)
+            try
             {
-                TcpClient tcpClient = tcpListener.AcceptTcpClient();
-                Task.Factory.StartNew((() => uploadFile(tcpClient)));
+                while (flag)
+                {
+                    TcpClient tcpClient = tcpListener.AcceptTcpClient();
+                    if (flag)
+                        Task.Factory.StartNew((() => uploadFile(tcpClient)));
+                }
             }
+            finally
+            {
+                tcpListener.Stop();
+            }
+        }
+
+        public void StopListener()
+        {
+            flag = false;
+            TcpClient tcpClient = new TcpClient("localhost", 8005);
         }
 
         private void uploadFile(TcpClient tcpClient)

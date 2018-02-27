@@ -50,7 +50,7 @@ namespace MiniTorrent.App
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            _uploadLogic.StopListener();
             _userLogic.LogoutFlagLogic(MyUser.UserName, this);
         }
         /**
