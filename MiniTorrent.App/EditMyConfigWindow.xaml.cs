@@ -47,11 +47,17 @@ namespace MiniTorrent.App
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigLogic userFromTextBox = new ConfigLogic(ConfigUsernameTextBox.Text, ConfigPasswordBox.Password, "downloads", "uploads", getMyIp(), "8005");
+            ConfigLogic userFromTextBox = new ConfigLogic(ConfigUsernameTextBox.Text, ConfigPasswordBox.Password, ConfigDownTextBox.Text, ConfigUpTextBox.Text, getMyIp(), "8005");
             writeXmlFile("MyConfig.xml", userFromTextBox);
+            if (!Directory.Exists(userFromTextBox.DownloadFolderPath))
+                Directory.CreateDirectory(userFromTextBox.DownloadFolderPath);
+            if (!Directory.Exists(userFromTextBox.UploadFolderPath))
+                Directory.CreateDirectory(userFromTextBox.UploadFolderPath);
+
             var client = new MiniTorrentServiceClient();
             client.UpdateUserDetails(oldUser.UserName, userFromTextBox.UserName, userFromTextBox.Password, getMyIp(), userFromTextBox.Port);
-            _uploadLogic.StopListener();
+            //_uploadLogic.StopListener();
+            window1._uploadLogic.StopListener();
             window1.Close();
             Window1 window = new Window1(new User
             { UserName = userFromTextBox.UserName,
@@ -59,6 +65,7 @@ namespace MiniTorrent.App
                 IP = userFromTextBox.IpAddress,
                 Port = int.Parse(userFromTextBox.Port)               
             },window1.MainWindow);
+            window.Show();
             this.Close();
         }
 

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MiniTorrent.App.AppLogic;
 using MiniTorrent.App.AppLogic.Classes;
 using MiniTorrent.App.MiniTorrentService;
+using System.IO;
 
 namespace MiniTorrent.App
 {
@@ -28,7 +29,7 @@ namespace MiniTorrent.App
         private readonly FileLogic _fileLogic;
         private readonly ConfigLogic _configLogic;
         private DownloadLogic _downloadLogic;
-        private UploadLogic _uploadLogic;
+        public UploadLogic _uploadLogic;
         public Window MainWindow { get; set; }
         public TransferFile TempChoosedFile { get; set; }
         private string downloadPath;
@@ -42,6 +43,15 @@ namespace MiniTorrent.App
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
             _configLogic = new ConfigLogic();
+            //if (!File.Exists("MyConfig.xml"))
+            //{
+            //    downloadPath = "download";
+            //    uploadPath = "upload";                
+            //}
+            //if (!Directory.Exists(_configLogic.DownloadFolderPath))
+            //    Directory.CreateDirectory(_configLogic.DownloadFolderPath);
+            //if (!Directory.Exists(_configLogic.UploadFolderPath))
+            //    Directory.CreateDirectory(_configLogic.UploadFolderPath);
             downloadPath = _configLogic.GetDownPath();
             uploadPath = _configLogic.GetUpPath();
             Task.Factory.StartNew((() =>
@@ -140,7 +150,7 @@ namespace MiniTorrent.App
                             line.Status = info.Status;
                             line.Time = info.Time;
                             _userLogic.UpdateUserTransferFilesLogic(line.FileName, MyUser.UserName);
-                            _fileLogic.CopyFileByPaths(line.FileName, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\down", "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\up");
+                            _fileLogic.CopyFileByPaths(line.FileName, downloadPath, uploadPath);
                         }
                     }
                     FileTransferListView.Items.Refresh();

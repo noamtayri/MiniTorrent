@@ -12,6 +12,8 @@ namespace MiniTorrent.App.AppLogic
 {
     public class UserLogic
     {
+        private ConfigLogic _configLogic;
+
         public void CheckLoginByConfig(string file, Window window)
         {
             
@@ -21,9 +23,18 @@ namespace MiniTorrent.App.AppLogic
         {
             var client = new MiniTorrentServiceClient();
             var user = client.Login(userName, password);
-
+            //ConfigLogic _configLogic = null;
             if (user != null)
             {
+                if (!File.Exists("MyConfig.xml"))
+                {                    
+                    var _configLogic = new ConfigLogic(userName, password, "download", "upload", EditMyConfigWindow.getMyIp(), "8005");
+                    EditMyConfigWindow.writeXmlFile("MyConfig.xml", _configLogic);
+                    if (!Directory.Exists(_configLogic.DownloadFolderPath))
+                        Directory.CreateDirectory(_configLogic.DownloadFolderPath);
+                    if (!Directory.Exists(_configLogic.UploadFolderPath))
+                        Directory.CreateDirectory(_configLogic.UploadFolderPath);
+                }
                 Window1 window1 = new Window1(user, window);
                 window1.Show();
                 window.Hide();

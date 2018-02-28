@@ -42,20 +42,6 @@ namespace MiniTorrent.App
                                 reader.Read();
                                 password = reader.Value;
                                 break;
-
-                            /*
-                            case "DownloadPath":
-                                reader.Read();
-                                ConfigDownTextBox.Text = reader.Value;
-                                break;
-
-                            case "UploadPath":
-                                reader.Read();
-                                ConfigUpTextBox.Text = reader.Value;
-                                break;
-                            default:
-                                break;
-                                */
                         }
                     }
                 }
@@ -74,19 +60,8 @@ namespace MiniTorrent.App
             UsernameTextBox.Text = "";
             PasswordBox.Password = "";
             UsernameTextBox.Focus();
+            _userLogic.LoginButton_ClickLogic(username, password, this);
 
-            if (_userLogic.LoginButton_ClickLogic(username, password, this))
-            {
-                if (!File.Exists("MyConfig.xml"))
-                {
-                    _configLogic = new ConfigLogic(username, password, "download", "upload", EditMyConfigWindow.getMyIp(), "8005");
-                    EditMyConfigWindow.writeXmlFile("MyConfig.xml", _configLogic);
-                }
-                if (!Directory.Exists(_configLogic.DownloadFolderPath))
-                    Directory.CreateDirectory(_configLogic.DownloadFolderPath);
-                if (!Directory.Exists(_configLogic.UploadFolderPath))
-                    Directory.CreateDirectory(_configLogic.UploadFolderPath);
-            }
         }
 
         private void OnEnterDownHandler(object sender, KeyEventArgs e)
