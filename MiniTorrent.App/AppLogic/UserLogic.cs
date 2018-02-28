@@ -43,7 +43,7 @@ namespace MiniTorrent.App.AppLogic
             }
             else
             {
-                MessageBox.Show("Wrong username or password", "Error");
+                MessageBox.Show("Disabled user or Wrong username/password", "Error");
             }
             return false;
         }

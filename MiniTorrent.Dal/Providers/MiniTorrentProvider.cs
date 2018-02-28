@@ -14,7 +14,7 @@ namespace MiniTorrent.Dal.Providers
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
                 return miniTorentDB.Users
-                    .Where(u => u.UserName.Equals(userName))
+                    .Where(u => u.UserName.Equals(userName) && u.Enable==true)
                     .Select(u => new DomainModel.User { UserName = u.UserName, Password = u.Password })
                     .FirstOrDefault();
             }
