@@ -252,6 +252,8 @@ namespace MiniTorrent.Dal
 		
 		private System.Nullable<int> _PORT;
 		
+		private System.Nullable<bool> _Enable;
+		
 		private EntitySet<UsersTransferFile> _UsersTransferFiles;
 		
     #region Extensibility Method Definitions
@@ -270,6 +272,8 @@ namespace MiniTorrent.Dal
     partial void OnIPChanged();
     partial void OnPORTChanging(System.Nullable<int> value);
     partial void OnPORTChanged();
+    partial void OnEnableChanging(System.Nullable<bool> value);
+    partial void OnEnableChanged();
     #endregion
 		
 		public User()
@@ -394,6 +398,26 @@ namespace MiniTorrent.Dal
 					this._PORT = value;
 					this.SendPropertyChanged("PORT");
 					this.OnPORTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Enable", DbType="Bit")]
+		public System.Nullable<bool> Enable
+		{
+			get
+			{
+				return this._Enable;
+			}
+			set
+			{
+				if ((this._Enable != value))
+				{
+					this.OnEnableChanging(value);
+					this.SendPropertyChanging();
+					this._Enable = value;
+					this.SendPropertyChanged("Enable");
+					this.OnEnableChanged();
 				}
 			}
 		}

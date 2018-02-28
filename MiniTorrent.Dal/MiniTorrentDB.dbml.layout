@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MiniTorrentDB">
   <DataContextMoniker Name="/MiniTorrentDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="0c23b577-968b-4aa8-a50f-2b05984b1cd5" absoluteBounds="0.75, 0.875, 2, 1.3862939453124998">
+    <classShape Id="7fdf3638-c4a1-4d87-ba61-90c7696d32bc" absoluteBounds="0.75, 0.875, 2, 1.3862939453124998">
       <DataClassMoniker Name="/MiniTorrentDBDataContext/TransferFile" />
       <nestedChildShapes>
-        <elementListCompartment Id="e69a16db-daf2-4049-9470-552160906342" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9e2a271b-5a02-41a2-a78d-b11b25c546ea" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1b109235-4068-46e1-8de4-5503786fab63" absoluteBounds="0.75, 4.25, 2, 1.9631982421875005">
+    <classShape Id="74ceeb34-f4a7-4156-a02f-e4a42b082ae8" absoluteBounds="0.75, 4.5, 2, 2.1554996744791666">
       <DataClassMoniker Name="/MiniTorrentDBDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="5d8db712-3e76-4157-bd53-3768f68262e6" absoluteBounds="0.765, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="da8daea4-1925-4b52-b7e2-c4a9390eaff1" absoluteBounds="0.765, 4.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c38d49b3-3280-4d45-8310-302e62b64a5f" absoluteBounds="3.5, 1, 2, 1.1939925130208335">
+    <classShape Id="f9941c33-6f9f-40cc-9fd2-e7a337dc6e98" absoluteBounds="3.5, 1, 2, 1.1939925130208335">
       <DataClassMoniker Name="/MiniTorrentDBDataContext/UsersTransferFile" />
       <nestedChildShapes>
-        <elementListCompartment Id="30bcf20f-dd69-43a9-b86d-55864ca6a781" absoluteBounds="3.515, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c804acbc-b6b0-4eac-bd74-6f9f8778d7e0" absoluteBounds="3.515, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 1.59699625651042); (3.5 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MiniTorrentDBDataContext/TransferFile/TransferFile_UsersTransferFile" />
       <nodes>
-        <classShapeMoniker Id="0c23b577-968b-4aa8-a50f-2b05984b1cd5" />
-        <classShapeMoniker Id="c38d49b3-3280-4d45-8310-302e62b64a5f" />
+        <classShapeMoniker Id="7fdf3638-c4a1-4d87-ba61-90c7696d32bc" />
+        <classShapeMoniker Id="f9941c33-6f9f-40cc-9fd2-e7a337dc6e98" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.23159912109375); (4.5 : 5.23159912109375); (4.5 : 2.19399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.57774983723958); (4.5 : 5.57774983723958); (4.5 : 2.19399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MiniTorrentDBDataContext/User/User_UsersTransferFile" />
       <nodes>
-        <classShapeMoniker Id="1b109235-4068-46e1-8de4-5503786fab63" />
-        <classShapeMoniker Id="c38d49b3-3280-4d45-8310-302e62b64a5f" />
+        <classShapeMoniker Id="74ceeb34-f4a7-4156-a02f-e4a42b082ae8" />
+        <classShapeMoniker Id="f9941c33-6f9f-40cc-9fd2-e7a337dc6e98" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
