@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace MiniTorrent.App.AppLogic
 {
@@ -25,6 +26,54 @@ namespace MiniTorrent.App.AppLogic
             UploadFolderPath = uploadFolderPath;
             IpAddress = ipAddress;
             Port = port;
+        }
+
+        public string GetDownPath()
+        {
+            string downPath="";
+            XmlTextReader reader = new XmlTextReader("MyConfig.xml");
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case "DownloadPath":
+                            reader.Read();
+                            downPath = reader.Value;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+            return downPath;
+        }
+
+        public string GetUpPath()
+        {
+            string upPath = "";
+            XmlTextReader reader = new XmlTextReader("MyConfig.xml");
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case "UploadPath":
+                            reader.Read();
+                            upPath = reader.Value;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+            return upPath;
         }
     }
 }

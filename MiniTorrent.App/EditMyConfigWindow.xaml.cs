@@ -25,15 +25,18 @@ namespace MiniTorrent.App
     /// </summary>
     public partial class EditMyConfigWindow : Window
     {
-        private Window window;
         private User oldUser;
         private ConfigLogic userFromConfig;
+        private Window1 window1;
+        private UploadLogic _uploadLogic;
 
-        public EditMyConfigWindow(Window window, User myUser)
+
+        public EditMyConfigWindow(User myUser, Window1 window1)
         {
             InitializeComponent();
-            this.window = window;
+            _uploadLogic = new UploadLogic();
             oldUser = myUser;
+            this.window1 = window1;
             if (File.Exists("MyConfig.xml"))
             {
                 userFromConfig = new ConfigLogic();
@@ -48,7 +51,14 @@ namespace MiniTorrent.App
             writeXmlFile("MyConfig.xml", userFromTextBox);
             var client = new MiniTorrentServiceClient();
             client.UpdateUserDetails(oldUser.UserName, userFromTextBox.UserName, userFromTextBox.Password, getMyIp(), userFromTextBox.Port);
-            window.Show();
+            _uploadLogic.StopListener();
+            window1.Close();
+            Window1 window = new Window1(new User
+            { UserName = userFromTextBox.UserName,
+                Password = userFromTextBox.Password,
+                IP = userFromTextBox.IpAddress,
+                Port = int.Parse(userFromTextBox.Port)               
+            },window1.MainWindow);
             this.Close();
         }
 
@@ -156,7 +166,7 @@ namespace MiniTorrent.App
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            window.Show();
+            window1.Show();
             this.Close();
         }
     }

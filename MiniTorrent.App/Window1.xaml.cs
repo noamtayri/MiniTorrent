@@ -26,23 +26,29 @@ namespace MiniTorrent.App
         public User MyUser { get; set; }
         private readonly UserLogic _userLogic;
         private readonly FileLogic _fileLogic;
+        private readonly ConfigLogic _configLogic;
         private DownloadLogic _downloadLogic;
         private UploadLogic _uploadLogic;
-        private Window mainWindow;
+        public Window MainWindow { get; set; }
         public TransferFile TempChoosedFile { get; set; }
+        private string downloadPath;
+        private string uploadPath;
 
         public Window1(User user, Window mainWindow)
         {
             InitializeComponent();
             MyUser = user;
-            this.mainWindow = mainWindow;
+            this.MainWindow = mainWindow;
             _userLogic = new UserLogic();
             _fileLogic = new FileLogic();
+            _configLogic = new ConfigLogic();
+            downloadPath = _configLogic.GetDownPath();
+            uploadPath = _configLogic.GetUpPath();
             Task.Factory.StartNew((() =>
             {
                 _uploadLogic = new UploadLogic();
                 _uploadLogic.MyUploadEvent += updateUploadTransferListView;
-                _uploadLogic.UploadListener("C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\up");
+                _uploadLogic.UploadListener(uploadPath);
                 //_uploadLogic.UploadListener("");
             }));
             _userLogic.RetrieveUserFilesLogic(MyUser, FileTransferListView);
@@ -52,7 +58,7 @@ namespace MiniTorrent.App
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
             _uploadLogic.StopListener();
-            _userLogic.LogoutFlagLogic(MyUser.UserName, this, mainWindow);
+            _userLogic.LogoutFlagLogic(MyUser.UserName, this, MainWindow);
         }
         /**
          * search text box change - for search files
@@ -87,7 +93,7 @@ namespace MiniTorrent.App
                 {
                     Task.Factory.StartNew((() =>
                     {
-                        _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "C:\\Users\\USER\\Desktop\\Noam\\שנה ג\\סמסטר א\\תכנות ברשת NET\\פרויקט\\MiniTorrent\\down");
+                        _downloadLogic = new DownloadLogic(file.FileName, file.FileSize, downloadPath);
                         //_downloadLogic = new DownloadLogic(file.FileName, file.FileSize, "");
                         _downloadLogic.MyDownloadEvent += updateDownloadTransferListView;
                         _downloadLogic.Start();
@@ -146,7 +152,7 @@ namespace MiniTorrent.App
 
         private void ConfigButton_Click(object sender, RoutedEventArgs e)
         {
-            EditMyConfigWindow editWindow = new EditMyConfigWindow(this, MyUser);
+            EditMyConfigWindow editWindow = new EditMyConfigWindow(MyUser, this);
             editWindow.Show();
             this.Hide();
         }
