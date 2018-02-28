@@ -134,5 +134,20 @@ namespace MiniTorrent.Dal.Providers
                 miniTorentDB.SubmitChanges();
             }
         }
+
+        public void AddNewUser(string userName, string password)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                var newUser = new User
+                {
+                    UserName = userName,
+                    Password = password,
+                    Enable = true
+                };
+                miniTorentDB.Users.InsertOnSubmit(newUser);
+                miniTorentDB.SubmitChanges();
+            }
+        }
     }
 }

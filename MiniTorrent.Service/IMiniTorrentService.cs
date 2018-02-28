@@ -41,6 +41,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
 
+        [OperationContract]
+        void AddNewUser(string userName, string password);
+
         // TODO: Add your service operations here
     }
 

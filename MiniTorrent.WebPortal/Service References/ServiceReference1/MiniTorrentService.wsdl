@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:61345/MiniTorrentService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:61345/MiniTorrentService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:61345/MiniTorrentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DomainModel" />
+      <xsd:import schemaLocation="http://localhost:61345/MiniTorrentService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMiniTorrentService_GetData_InputMessage">
@@ -49,6 +50,24 @@
   <wsdl:message name="IMiniTorrentService_GetListOfResources_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetListOfResourcesResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_UpdateUserFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserFiles" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_UpdateUserFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_UpdateUserDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_UpdateUserDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AddNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AddNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -77,6 +96,18 @@
     <wsdl:operation name="GetListOfResources">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetListOfResources" message="tns:IMiniTorrentService_GetListOfResources_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse" message="tns:IMiniTorrentService_GetListOfResources_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserFiles" message="tns:IMiniTorrentService_UpdateUserFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserFilesResponse" message="tns:IMiniTorrentService_UpdateUserFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails" message="tns:IMiniTorrentService_UpdateUserDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse" message="tns:IMiniTorrentService_UpdateUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/AddNewUser" message="tns:IMiniTorrentService_AddNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/AddNewUserResponse" message="tns:IMiniTorrentService_AddNewUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -137,6 +168,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetListOfResources">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetListOfResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserFiles">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/UpdateUserFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserDetails">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/AddNewUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

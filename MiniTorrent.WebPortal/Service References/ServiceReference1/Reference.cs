@@ -140,6 +140,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourcesNumberField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -185,6 +191,32 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
                 if ((this.ResourcesNumberField.Equals(value) != true)) {
                     this.ResourcesNumberField = value;
                     this.RaisePropertyChanged("ResourcesNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimeField, value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
                 }
             }
         }
@@ -240,10 +272,28 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.TransferFile[]> GetMyFilesAsync(string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetListOfResources", ReplyAction="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse")]
-        MiniTorrent.WebPortal.ServiceReference1.User[] GetListOfResources(string fileName);
+        string[] GetListOfResources(string fileName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetListOfResources", ReplyAction="http://tempuri.org/IMiniTorrentService/GetListOfResourcesResponse")]
-        System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User[]> GetListOfResourcesAsync(string fileName);
+        System.Threading.Tasks.Task<string[]> GetListOfResourcesAsync(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserFilesResponse")]
+        void UpdateUserFiles(string fileName, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserFiles", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserFilesResponse")]
+        System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
+        void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
+        System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
+        void AddNewUser(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
+        System.Threading.Tasks.Task AddNewUserAsync(string userName, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -321,12 +371,36 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
             return base.Channel.GetMyFilesAsync(userName);
         }
         
-        public MiniTorrent.WebPortal.ServiceReference1.User[] GetListOfResources(string fileName) {
+        public string[] GetListOfResources(string fileName) {
             return base.Channel.GetListOfResources(fileName);
         }
         
-        public System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User[]> GetListOfResourcesAsync(string fileName) {
+        public System.Threading.Tasks.Task<string[]> GetListOfResourcesAsync(string fileName) {
             return base.Channel.GetListOfResourcesAsync(fileName);
+        }
+        
+        public void UpdateUserFiles(string fileName, string userName) {
+            base.Channel.UpdateUserFiles(fileName, userName);
+        }
+        
+        public System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName) {
+            return base.Channel.UpdateUserFilesAsync(fileName, userName);
+        }
+        
+        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
+            base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
+        }
+        
+        public System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
+            return base.Channel.UpdateUserDetailsAsync(oldUserName, newUserName, password, ip, port);
+        }
+        
+        public void AddNewUser(string userName, string password) {
+            base.Channel.AddNewUser(userName, password);
+        }
+        
+        public System.Threading.Tasks.Task AddNewUserAsync(string userName, string password) {
+            return base.Channel.AddNewUserAsync(userName, password);
         }
     }
 }

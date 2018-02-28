@@ -67,6 +67,12 @@ namespace MiniTorrent.Service
             userService.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
         }
 
+        public void AddNewUser(string userName, string password)
+        {
+            AdminService adminService = new AdminService();
+            adminService.AddNewUser(userName, password);
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {
