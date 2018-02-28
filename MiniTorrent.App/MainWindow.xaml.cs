@@ -46,7 +46,8 @@ namespace MiniTorrent.App
                     }
                 }
                 reader.Close();
-                _userLogic.LoginButton_ClickLogic(username, password, this);
+                if(!_userLogic.LoginButton_ClickLogic(username, password, this))
+                    File.Delete("MyConfig.xml");
             }
         }
         

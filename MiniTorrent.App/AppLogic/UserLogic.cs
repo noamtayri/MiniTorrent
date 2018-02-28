@@ -30,6 +30,7 @@ namespace MiniTorrent.App.AppLogic
                 {                    
                     var _configLogic = new ConfigLogic(userName, password, "download", "upload", EditMyConfigWindow.getMyIp(), "8005");
                     EditMyConfigWindow.writeXmlFile("MyConfig.xml", _configLogic);
+                    client.UpdateUserDetails(_configLogic.UserName, _configLogic.UserName, _configLogic.Password, _configLogic.IpAddress, _configLogic.Port);
                     if (!Directory.Exists(_configLogic.DownloadFolderPath))
                         Directory.CreateDirectory(_configLogic.DownloadFolderPath);
                     if (!Directory.Exists(_configLogic.UploadFolderPath))
