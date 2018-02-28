@@ -11,11 +11,10 @@
     </p>
     <p>
         <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
-        &nbsp;
         <asp:TextBox ID="PasswordTextBox" runat="server"></asp:TextBox>
     </p>
     <p style="margin-left: 40px">
-        <asp:Button ID="CreateUserButton" runat="server" Text="Register" />
+        <asp:Button ID="CreateUserButton" runat="server" Text="Register" OnClick="CreateUserButton_Click" />
     </p>
     <p>
     </p>

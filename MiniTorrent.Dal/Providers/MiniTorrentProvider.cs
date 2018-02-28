@@ -143,6 +143,7 @@ namespace MiniTorrent.Dal.Providers
                 {
                     UserName = userName,
                     Password = password,
+                    LogIn = false,
                     Enable = true
                 };
                 miniTorentDB.Users.InsertOnSubmit(newUser);
