@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace MiniTorrent.WebPortal.Forms
 {
@@ -20,9 +21,16 @@ namespace MiniTorrent.WebPortal.Forms
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
             var client = new MiniTorrentServiceClient();
-            client.AddNewUser(userName, password);
-            UserNameTextBox.Text = " ";
-            PasswordTextBox.Text = " ";
+            if (client.AddNewUser(userName, password))
+            {
+                MessageBox.Show("User registered");
+            }
+            else
+            {
+                MessageBox.Show("Username already exists");
+            }
+            UserNameTextBox.Text = "";
+            PasswordTextBox.Text = "";
         }
     }
 }

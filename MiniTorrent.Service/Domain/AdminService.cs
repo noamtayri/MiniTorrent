@@ -15,9 +15,9 @@ namespace MiniTorrent.Service.Domain
             _miniTorrentProvider = new MiniTorrentProvider();
         }
 
-        public void AddNewUser(string userName, string password)
+        public bool AddNewUser(string userName, string password)
         {
-            _miniTorrentProvider.AddNewUser(userName, password);
+            return _miniTorrentProvider.AddNewUser(userName, password);
         }
     }
 }

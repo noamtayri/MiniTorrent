@@ -290,10 +290,10 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
-        void AddNewUser(string userName, string password);
+        bool AddNewUser(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
-        System.Threading.Tasks.Task AddNewUserAsync(string userName, string password);
+        System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -395,11 +395,11 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
             return base.Channel.UpdateUserDetailsAsync(oldUserName, newUserName, password, ip, port);
         }
         
-        public void AddNewUser(string userName, string password) {
-            base.Channel.AddNewUser(userName, password);
+        public bool AddNewUser(string userName, string password) {
+            return base.Channel.AddNewUser(userName, password);
         }
         
-        public System.Threading.Tasks.Task AddNewUserAsync(string userName, string password) {
+        public System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password) {
             return base.Channel.AddNewUserAsync(userName, password);
         }
     }
