@@ -24,5 +24,10 @@ namespace MiniTorrent.Service.Domain
         {
             return password.Equals(userPassword);
         }
+
+        public User GetUser(string userName)
+        {
+            return _miniTorrentProvider.GetUser(userName);
+        }
     }
 }

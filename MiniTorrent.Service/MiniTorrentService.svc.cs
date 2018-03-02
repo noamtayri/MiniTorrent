@@ -73,6 +73,12 @@ namespace MiniTorrent.Service
             return adminService.AddNewUser(userName, password);
         }
 
+        public User GetUser(string userName)
+        {
+            AuthService authService = new AuthService();
+            return authService.GetUser(userName);
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {

@@ -23,6 +23,9 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool EnableDisableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -44,6 +47,19 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool EnableDisable {
+            get {
+                return this.EnableDisableField;
+            }
+            set {
+                if ((this.EnableDisableField.Equals(value) != true)) {
+                    this.EnableDisableField = value;
+                    this.RaisePropertyChanged("EnableDisable");
+                }
             }
         }
         
@@ -284,10 +300,10 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
-        void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
+        bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
-        System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
+        System.Threading.Tasks.Task<bool> UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
         bool AddNewUser(string userName, string password);
@@ -387,11 +403,11 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
             return base.Channel.UpdateUserFilesAsync(fileName, userName);
         }
         
-        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
-            base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
+        public bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
+            return base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
         }
         
-        public System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
+        public System.Threading.Tasks.Task<bool> UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
             return base.Channel.UpdateUserDetailsAsync(oldUserName, newUserName, password, ip, port);
         }
         

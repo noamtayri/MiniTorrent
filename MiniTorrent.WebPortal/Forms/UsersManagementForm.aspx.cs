@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniTorrent.WebPortal.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,18 @@ namespace MiniTorrent.WebPortal.Forms
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void UpdateUserButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            string userName = UserNameTextBox.Text;
+            var client = new MiniTorrentServiceClient();
+            
         }
     }
 }

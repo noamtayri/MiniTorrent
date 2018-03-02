@@ -44,6 +44,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         bool AddNewUser(string userName, string password);
 
+        [OperationContract]
+        User GetUser(string userName);
+
         // TODO: Add your service operations here
     }
 

@@ -12,6 +12,7 @@ namespace DomainModel
         public string Password { get; set; }
         public string IP { get; set; }
         public int Port { get; set; }
-        public List<TransferFile> OwnedFiles { get; set; }        
+        public List<TransferFile> OwnedFiles { get; set; }
+        public bool EnableDisable { get; set; }        
     }
 }
