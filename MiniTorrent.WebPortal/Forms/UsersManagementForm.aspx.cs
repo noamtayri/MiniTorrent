@@ -22,9 +22,12 @@ namespace MiniTorrent.WebPortal.Forms
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
-            string userName = UserNameTextBox.Text;
+            string userName = SearchUserNameTextBox.Text;
             var client = new MiniTorrentServiceClient();
-            
+            User user = client.GetUser(userName);
+            UserNameTextBox.Text = user.UserName;
+            PasswordTextBox.Text = user.Password;
+            EnableDisableCheckBox.Checked = user.EnableDisable;
         }
     }
 }

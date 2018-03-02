@@ -15,7 +15,7 @@ namespace MiniTorrent.Dal.Providers
             {
                 return miniTorentDB.Users
                     .Where(u => u.UserName.Equals(userName) && u.Enable==true)
-                    .Select(u => new DomainModel.User { UserName = u.UserName, Password = u.Password })
+                    .Select(u => new DomainModel.User { UserName = u.UserName, Password = u.Password, EnableDisable = u.Enable.HasValue })
                     .FirstOrDefault();
             }
         }
