@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace MiniTorrent.WebPortal.Forms
 {
@@ -25,9 +26,16 @@ namespace MiniTorrent.WebPortal.Forms
             string userName = SearchUserNameTextBox.Text;
             var client = new MiniTorrentServiceClient();
             User user = client.GetUser(userName);
-            UserNameTextBox.Text = user.UserName;
-            PasswordTextBox.Text = user.Password;
-            EnableDisableCheckBox.Checked = user.EnableDisable;
+            if (user == null)
+            {
+                MessageBox.Show("Username not found");
+            }
+            else
+            {
+                UserNameTextBox.Text = user.UserName;
+                PasswordTextBox.Text = user.Password;
+                EnableDisableCheckBox.Checked = user.EnableDisable;
+            }
         }
     }
 }
