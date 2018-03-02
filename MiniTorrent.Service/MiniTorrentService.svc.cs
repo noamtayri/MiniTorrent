@@ -79,6 +79,12 @@ namespace MiniTorrent.Service
             return authService.GetUser(userName);
         }
 
+        public void EnableDisableUser(string userName, bool enable)
+        {
+            AdminService adminService = new AdminService();
+            adminService.EnableDisableUser(userName, enable);
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {

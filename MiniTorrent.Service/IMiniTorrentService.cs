@@ -47,6 +47,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         User GetUser(string userName);
 
+        [OperationContract]
+        void EnableDisableUser(string userName, bool enable);
+
         // TODO: Add your service operations here
     }
 

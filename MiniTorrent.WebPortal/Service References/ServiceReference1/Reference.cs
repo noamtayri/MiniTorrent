@@ -316,6 +316,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUserResponse")]
         System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> GetUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/EnableDisableUser", ReplyAction="http://tempuri.org/IMiniTorrentService/EnableDisableUserResponse")]
+        void EnableDisableUser(string userName, bool enable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/EnableDisableUser", ReplyAction="http://tempuri.org/IMiniTorrentService/EnableDisableUserResponse")]
+        System.Threading.Tasks.Task EnableDisableUserAsync(string userName, bool enable);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -431,6 +437,14 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> GetUserAsync(string userName) {
             return base.Channel.GetUserAsync(userName);
+        }
+        
+        public void EnableDisableUser(string userName, bool enable) {
+            base.Channel.EnableDisableUser(userName, enable);
+        }
+        
+        public System.Threading.Tasks.Task EnableDisableUserAsync(string userName, bool enable) {
+            return base.Channel.EnableDisableUserAsync(userName, enable);
         }
     }
 }

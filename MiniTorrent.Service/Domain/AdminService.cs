@@ -19,5 +19,10 @@ namespace MiniTorrent.Service.Domain
         {
             return _miniTorrentProvider.AddNewUser(userName, password);
         }
+
+        public void EnableDisableUser(string userName, bool enable)
+        {
+            _miniTorrentProvider.EnableDisableUser(userName, enable);
+        }
     }
 }
