@@ -284,10 +284,16 @@ namespace MiniTorrent.App.MiniTorrentService {
         System.Threading.Tasks.Task UpdateUserFilesAsync(string fileName, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
-        void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
+        bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails", ReplyAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse")]
-        System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
+        System.Threading.Tasks.Task<bool> UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
+        bool AddNewUser(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
+        System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -381,12 +387,20 @@ namespace MiniTorrent.App.MiniTorrentService {
             return base.Channel.UpdateUserFilesAsync(fileName, userName);
         }
         
-        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
-            base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
+        public bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port) {
+            return base.Channel.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
         }
         
-        public System.Threading.Tasks.Task UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
+        public System.Threading.Tasks.Task<bool> UpdateUserDetailsAsync(string oldUserName, string newUserName, string password, string ip, string port) {
             return base.Channel.UpdateUserDetailsAsync(oldUserName, newUserName, password, ip, port);
+        }
+        
+        public bool AddNewUser(string userName, string password) {
+            return base.Channel.AddNewUser(userName, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password) {
+            return base.Channel.AddNewUserAsync(userName, password);
         }
     }
 }

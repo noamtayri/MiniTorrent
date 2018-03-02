@@ -61,10 +61,10 @@ namespace MiniTorrent.Service
             userService.UpdateUserFiles(fileName, userName);
         }
 
-        public void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port)
+        public bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port)
         {
             UserService userService = new UserService();
-            userService.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
+            return userService.UpdateUserDetails(oldUserName, newUserName, password, ip, port);
         }
 
         public bool AddNewUser(string userName, string password)

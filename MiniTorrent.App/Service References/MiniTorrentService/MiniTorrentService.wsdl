@@ -62,6 +62,12 @@
   <wsdl:message name="IMiniTorrentService_UpdateUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AddNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AddNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -98,6 +104,10 @@
     <wsdl:operation name="UpdateUserDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetails" message="tns:IMiniTorrentService_UpdateUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/UpdateUserDetailsResponse" message="tns:IMiniTorrentService_UpdateUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/AddNewUser" message="tns:IMiniTorrentService_AddNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/AddNewUserResponse" message="tns:IMiniTorrentService_AddNewUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -176,6 +186,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserDetails">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/UpdateUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewUser">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/AddNewUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

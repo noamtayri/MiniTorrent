@@ -39,7 +39,7 @@ namespace MiniTorrent.Service
         void UpdateUserFiles(string fileName, string userName);
 
         [OperationContract]
-        void UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
+        bool UpdateUserDetails(string oldUserName, string newUserName, string password, string ip, string port);
 
         [OperationContract]
         bool AddNewUser(string userName, string password);

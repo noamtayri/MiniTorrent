@@ -121,10 +121,19 @@ namespace MiniTorrent.Dal.Providers
             }
         }
 
-        public void SetUserDetails(string oldUserName, string newUserName, string password, string ip, string port)
+        public bool SetUserDetails(string oldUserName, string newUserName, string password, string ip, string port)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
+                if (oldUserName != newUserName)
+                {
+                    var checkUser = miniTorentDB.Users
+                        .FirstOrDefault(u => u.UserName.Equals(newUserName));
+                    if (checkUser != null)
+                    {
+                        return false;
+                    }
+                }
                 var user = miniTorentDB.Users
                     .FirstOrDefault(u => u.UserName.Equals(oldUserName));
                 user.UserName = newUserName;
@@ -132,6 +141,7 @@ namespace MiniTorrent.Dal.Providers
                 user.IP = ip;
                 user.PORT = int.Parse(port);
                 miniTorentDB.SubmitChanges();
+                return true;
             }
         }
 

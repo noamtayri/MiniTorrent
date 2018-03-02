@@ -55,18 +55,25 @@ namespace MiniTorrent.App
                 Directory.CreateDirectory(userFromTextBox.UploadFolderPath);
 
             var client = new MiniTorrentServiceClient();
-            client.UpdateUserDetails(oldUser.UserName, userFromTextBox.UserName, userFromTextBox.Password, getMyIp(), userFromTextBox.Port);
-            //_uploadLogic.StopListener();
-            window1._uploadLogic.StopListener();
-            window1.Close();
-            Window1 window = new Window1(new User
-            { UserName = userFromTextBox.UserName,
-                Password = userFromTextBox.Password,
-                IP = userFromTextBox.IpAddress,
-                Port = int.Parse(userFromTextBox.Port)               
-            },window1.MainWindow);
-            window.Show();
-            this.Close();
+            if (client.UpdateUserDetails(oldUser.UserName, userFromTextBox.UserName, userFromTextBox.Password,
+                getMyIp(), userFromTextBox.Port))
+            {
+                window1._uploadLogic.StopListener();
+                window1.Close();
+                Window1 window = new Window1(new User
+                {
+                    UserName = userFromTextBox.UserName,
+                    Password = userFromTextBox.Password,
+                    IP = userFromTextBox.IpAddress,
+                    Port = int.Parse(userFromTextBox.Port)
+                }, window1.MainWindow);
+                window.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Username already exists", "Error");
+            }
         }
 
         public static void writeXmlFile(string filePath, ConfigLogic newUser)
