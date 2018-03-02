@@ -317,11 +317,11 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUserResponse")]
         System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> GetUserAsync(string userName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/EnableDisableUser", ReplyAction="http://tempuri.org/IMiniTorrentService/EnableDisableUserResponse")]
-        void EnableDisableUser(string userName, bool enable);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminUpdateUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminUpdateUserResponse")]
+        bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/EnableDisableUser", ReplyAction="http://tempuri.org/IMiniTorrentService/EnableDisableUserResponse")]
-        System.Threading.Tasks.Task EnableDisableUserAsync(string userName, bool enable);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminUpdateUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminUpdateUserResponse")]
+        System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -439,12 +439,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
             return base.Channel.GetUserAsync(userName);
         }
         
-        public void EnableDisableUser(string userName, bool enable) {
-            base.Channel.EnableDisableUser(userName, enable);
+        public bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable) {
+            return base.Channel.AdminUpdateUser(oldUserName, newUserName, password, enable);
         }
         
-        public System.Threading.Tasks.Task EnableDisableUserAsync(string userName, bool enable) {
-            return base.Channel.EnableDisableUserAsync(userName, enable);
+        public System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable) {
+            return base.Channel.AdminUpdateUserAsync(oldUserName, newUserName, password, enable);
         }
     }
 }

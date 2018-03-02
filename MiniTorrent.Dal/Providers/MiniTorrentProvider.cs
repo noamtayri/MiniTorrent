@@ -145,16 +145,27 @@ namespace MiniTorrent.Dal.Providers
             }
         }
 
-        public void EnableDisableUser(string userName, bool enable)
+        public bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable)
         {
             using (var miniTorentDB =new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
             {
+                if (oldUserName != newUserName)
+                {
+                    var checkUser = miniTorentDB.Users
+                        .FirstOrDefault(u => u.UserName.Equals(newUserName));
+                    if (checkUser != null)
+                    {
+                        return false;
+                    }
+                }
                 var user = miniTorentDB.Users
-                    .FirstOrDefault(u => u.UserName.Equals(userName));
+                    .FirstOrDefault(u => u.UserName.Equals(oldUserName));
+                user.UserName = newUserName;
+                user.Password = password;
                 user.Enable = enable;
                 miniTorentDB.SubmitChanges();
+                return true;
             }
-
         }
 
         public bool AddNewUser(string userName, string password)

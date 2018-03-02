@@ -157,17 +157,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnableDisableUser">
+  <xs:element name="AdminUpdateUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oldUserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newUserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="enable" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnableDisableUserResponse">
+  <xs:element name="AdminUpdateUserResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AdminUpdateUserResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

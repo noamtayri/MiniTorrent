@@ -18,7 +18,11 @@ namespace MiniTorrent.WebPortal.Forms
 
         protected void UpdateUserButton_Click(object sender, EventArgs e)
         {
-            
+            string oldUserName = SearchUserNameTextBox.Text;
+            string newUserName = UserNameTextBox.Text;
+            string password = PasswordTextBox.Text;
+            var client = new MiniTorrentServiceClient();
+            //if(client.UpdateUserDetails(oldUserName, newUserName, password, ))
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)
