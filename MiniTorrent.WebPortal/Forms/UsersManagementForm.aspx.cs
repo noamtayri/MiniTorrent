@@ -21,8 +21,16 @@ namespace MiniTorrent.WebPortal.Forms
             string oldUserName = SearchUserNameTextBox.Text;
             string newUserName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
+            bool enable = EnableDisableCheckBox.Checked;
             var client = new MiniTorrentServiceClient();
-            //if(client.UpdateUserDetails(oldUserName, newUserName, password, ))
+            if (client.AdminUpdateUser(oldUserName, newUserName, password, enable))
+            {
+                MessageBox.Show("User updated");
+            }
+            else
+            {
+                MessageBox.Show("Username not found");
+            }
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)
