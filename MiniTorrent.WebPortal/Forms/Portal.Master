@@ -17,10 +17,11 @@
             <DynamicMenuStyle BackColor="#E3EAEB" />
             <DynamicSelectedStyle BackColor="#1C5E55" />
             <Items>
-                <asp:MenuItem NavigateUrl="~/Forms/HomePage.html" Text="Home Page" Value="Home Page"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Forms/InfoForm.aspx" Text="Info Form" Value="Info Form"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Forms/RegisterUserForm.aspx" Text="Register User" Value="Register User"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Forms/UsersManagementForm.aspx" Text="Users Management" Value="Users Management"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/Forms/HomePage.html" Text="Home Page" Value="Home Page">
+                    <asp:MenuItem NavigateUrl="~/Forms/InfoForm.aspx" Text="Info Form" Value="Info Form"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Forms/RegisterUserForm.aspx" Text="Register User" Value="Register User"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Forms/UsersManagementForm.aspx" Text="Users Management" Value="Users Management"></asp:MenuItem>
+                </asp:MenuItem>
             </Items>
             <StaticHoverStyle BackColor="#666666" ForeColor="White" />
             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
