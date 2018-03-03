@@ -3,9 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p></p>
+    <p></p>
     <asp:Label ID="FileNameSearchLabel" runat="server" Text="File name:"></asp:Label>
     <asp:TextBox ID="FileNameSearchTextBox" runat="server" Width="428px"></asp:TextBox>
-    <asp:Button ID="SearchFileButton" runat="server" Text="Search" />
+    <asp:Button ID="SearchFileButton" runat="server" Text="Search" OnClick="SearchFileButton_Click" />
     <br />
     <br />
     <asp:ListBox ID="FilesListBox" runat="server" Height="246px" Width="644px"></asp:ListBox>

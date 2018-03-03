@@ -35,5 +35,10 @@ namespace MiniTorrent.Service.Domain
         {
             return _miniTorrentProvider.AdminGetUser(userName);
         }
+
+        public int GetOnlineUsers()
+        {
+            return _miniTorrentProvider.GetOnlineUsers();
+        }
     }
 }

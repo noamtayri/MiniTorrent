@@ -56,6 +56,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         User AdminGetUser(string userName);
 
+        [OperationContract]
+        int GetOnlineUsers();
+
         // TODO: Add your service operations here
     }
 

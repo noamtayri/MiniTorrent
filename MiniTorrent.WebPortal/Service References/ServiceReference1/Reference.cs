@@ -334,6 +334,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminGetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse")]
         System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> AdminGetUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers", ReplyAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse")]
+        int GetOnlineUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers", ReplyAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse")]
+        System.Threading.Tasks.Task<int> GetOnlineUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -473,6 +479,14 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         public System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> AdminGetUserAsync(string userName) {
             return base.Channel.AdminGetUserAsync(userName);
+        }
+        
+        public int GetOnlineUsers() {
+            return base.Channel.GetOnlineUsers();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetOnlineUsersAsync() {
+            return base.Channel.GetOnlineUsersAsync();
         }
     }
 }

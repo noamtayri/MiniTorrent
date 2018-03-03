@@ -92,6 +92,12 @@
   <wsdl:message name="IMiniTorrentService_AdminGetUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AdminGetUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetOnlineUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnlineUsers" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetOnlineUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnlineUsersResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -148,6 +154,10 @@
     <wsdl:operation name="AdminGetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/AdminGetUser" message="tns:IMiniTorrentService_AdminGetUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse" message="tns:IMiniTorrentService_AdminGetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers" message="tns:IMiniTorrentService_GetOnlineUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse" message="tns:IMiniTorrentService_GetOnlineUsers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -271,6 +281,15 @@
     </wsdl:operation>
     <wsdl:operation name="AdminGetUser">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/AdminGetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineUsers">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

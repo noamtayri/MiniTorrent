@@ -223,5 +223,26 @@ namespace MiniTorrent.Dal.Providers
                 miniTorentDB.SubmitChanges();
             }
         }
+
+        public int GetOnlineUsers()
+        {
+            using (var miniTorentDB =
+                new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"]
+                    .ConnectionString))
+            {
+                return miniTorentDB.Users
+                    .Count(u => u.LogIn.Equals(true));
+            }
+        }
+
+        public int GetUsersAmount()
+        {
+            using (var miniTorentDB =
+                new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"]
+                    .ConnectionString))
+            {
+                return miniTorentDB.Users.Count();
+            }
+        }
     }
 }
