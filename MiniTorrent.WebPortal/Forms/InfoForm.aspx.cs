@@ -20,7 +20,19 @@ namespace MiniTorrent.WebPortal.Forms
 
         protected void SearchFileButton_Click(object sender, EventArgs e)
         {
-
+            FilesListBox.Items.Clear();
+            string fileName = FileNameSearchTextBox.Text;
+            var client = new MiniTorrentServiceClient();
+            List<TransferFile> files = client.SearchFiles(fileName).ToList();
+            if (files.Count != 0)
+                foreach (var file in files)
+                {
+                    FilesListBox.Items.Add(file.FileName);
+                }
+            else
+            {
+                FilesListBox.Items.Clear();
+            }
         }
 
         protected void RefreshButton_Click(object sender, EventArgs e)

@@ -9,7 +9,7 @@
     <asp:Button ID="SearchFileButton" runat="server" Text="Search" OnClick="SearchFileButton_Click" />
     <br />
     <br />
-    <asp:ListBox ID="FilesListBox" runat="server" Height="246px" Width="644px"></asp:ListBox>
+    <asp:ListBox ID="FilesListBox" runat="server" Height="246px" Width="254px"></asp:ListBox>
     <br />
     <br />
     <asp:Button ID="RefreshButton" runat="server" Text="Refresh" OnClick="RefreshButton_Click" />
