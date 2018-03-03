@@ -85,6 +85,12 @@ namespace MiniTorrent.Service
             return adminService.AdminUpdateUser(oldUserName, newUserName, password, enable);
         }
 
+        public void DeleteUser(string userName)
+        {
+            AdminService adminService = new AdminService();
+            adminService.DeleteUser(userName);
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {

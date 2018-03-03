@@ -50,6 +50,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable);
 
+        [OperationContract]
+        void DeleteUser(string userName);
+
         // TODO: Add your service operations here
     }
 

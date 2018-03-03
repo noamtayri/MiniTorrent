@@ -322,6 +322,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminUpdateUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminUpdateUserResponse")]
         System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/DeleteUser", ReplyAction="http://tempuri.org/IMiniTorrentService/DeleteUserResponse")]
+        void DeleteUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/DeleteUser", ReplyAction="http://tempuri.org/IMiniTorrentService/DeleteUserResponse")]
+        System.Threading.Tasks.Task DeleteUserAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -445,6 +451,14 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable) {
             return base.Channel.AdminUpdateUserAsync(oldUserName, newUserName, password, enable);
+        }
+        
+        public void DeleteUser(string userName) {
+            base.Channel.DeleteUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(string userName) {
+            return base.Channel.DeleteUserAsync(userName);
         }
     }
 }

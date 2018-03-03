@@ -55,5 +55,18 @@ namespace MiniTorrent.WebPortal.Forms
                 SearchUserNameTextBox.Enabled = false;
             }
         }
+
+        protected void DeleteUserButton_Click(object sender, EventArgs e)
+        {
+            string userNameToDelete = SearchUserNameTextBox.Text;
+            var client = new MiniTorrentServiceClient();
+            client.DeleteUser(userNameToDelete);
+            SearchUserNameTextBox.Text = "";
+            UserNameTextBox.Text = "";
+            PasswordTextBox.Text = "";
+            EnableDisableCheckBox.Checked = false;
+            SearchUserNameTextBox.Enabled = true;
+            MessageBox.Show("User deleted");
+        }
     }
 }

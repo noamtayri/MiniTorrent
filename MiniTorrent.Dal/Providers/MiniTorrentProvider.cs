@@ -193,5 +193,23 @@ namespace MiniTorrent.Dal.Providers
                 }
             }
         }
+
+        public void DeleteUser(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                var usersTransferFilesToDelete = miniTorentDB.UsersTransferFiles
+                    .Where(u => u.User.UserName.Equals(userName))
+                    .ToList();
+                foreach (var line in usersTransferFilesToDelete)
+                {
+                    miniTorentDB.GetTable<UsersTransferFile>().DeleteOnSubmit(line);
+                }
+                var userToDelete = miniTorentDB.Users
+                    .FirstOrDefault(u => u.UserName.Equals(userName));
+                miniTorentDB.GetTable<User>().DeleteOnSubmit(userToDelete);
+                miniTorentDB.SubmitChanges();
+            }
+        }
     }
 }

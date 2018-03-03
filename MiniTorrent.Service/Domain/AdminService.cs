@@ -24,5 +24,10 @@ namespace MiniTorrent.Service.Domain
         {
             return _miniTorrentProvider.AdminUpdateUser(oldUserName, newUserName, password, enable);
         }
+
+        public void DeleteUser(string userName)
+        {
+            _miniTorrentProvider.DeleteUser(userName);
+        }
     }
 }

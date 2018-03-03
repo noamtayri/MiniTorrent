@@ -26,7 +26,7 @@
     <p>
         <asp:Button ID="UpdateUserButton" runat="server" Text="Update" OnClick="UpdateUserButton_Click" />
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="DeleteUserButton" runat="server" Text="Delete" />
+        <asp:Button ID="DeleteUserButton" runat="server" Text="Delete" OnClick="DeleteUserButton_Click" />
         </p>
     <p>
         </p>
