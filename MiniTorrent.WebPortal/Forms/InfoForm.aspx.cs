@@ -22,5 +22,13 @@ namespace MiniTorrent.WebPortal.Forms
         {
 
         }
+
+        protected void RefreshButton_Click(object sender, EventArgs e)
+        {
+            var client = new MiniTorrentServiceClient();
+            OnlineUsersLabel.Text = client.GetOnlineUsers().ToString();
+            AllUsersLabel.Text = client.GetUsersAmount().ToString();
+            AllFilesLabel.Text = client.GetFilesAmount().ToString();
+        }
     }
 }

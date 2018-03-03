@@ -12,15 +12,16 @@
     <asp:ListBox ID="FilesListBox" runat="server" Height="246px" Width="644px"></asp:ListBox>
     <br />
     <br />
+    <asp:Button ID="RefreshButton" runat="server" Text="Refresh" OnClick="RefreshButton_Click" />
     <br />
     <asp:Label ID="Label1" runat="server" Text="Online users:"></asp:Label>
-    <asp:Label ID="OnlineUsersLabel" runat="server" Text=" "></asp:Label>
+    <asp:Label ID="OnlineUsersLabel" runat="server" Text=" " Enabled="False"></asp:Label>
     <br />
     <asp:Label ID="Label2" runat="server" Text="All users:"></asp:Label>
-    <asp:Label ID="AllUsersLabel" runat="server" Text=" "></asp:Label>
+    <asp:Label ID="AllUsersLabel" runat="server" Text=" " Enabled="False"></asp:Label>
     <br />
     <asp:Label ID="Label3" runat="server" Text="All files:"></asp:Label>
-    <asp:Label ID="AllFilesLabel" runat="server" Text=" "></asp:Label>
+    <asp:Label ID="AllFilesLabel" runat="server" Text=" " Enabled="False"></asp:Label>
     <br />
     <br />
 </asp:Content>
