@@ -86,6 +86,12 @@
   <wsdl:message name="IMiniTorrentService_DeleteUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AdminGetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminGetUser" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_AdminGetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminGetUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -138,6 +144,10 @@
     <wsdl:operation name="DeleteUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/DeleteUser" message="tns:IMiniTorrentService_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/DeleteUserResponse" message="tns:IMiniTorrentService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminGetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/AdminGetUser" message="tns:IMiniTorrentService_AdminGetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse" message="tns:IMiniTorrentService_AdminGetUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -252,6 +262,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminGetUser">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/AdminGetUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

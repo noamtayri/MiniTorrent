@@ -328,6 +328,12 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/DeleteUser", ReplyAction="http://tempuri.org/IMiniTorrentService/DeleteUserResponse")]
         System.Threading.Tasks.Task DeleteUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminGetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse")]
+        MiniTorrent.WebPortal.ServiceReference1.User AdminGetUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminGetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> AdminGetUserAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -459,6 +465,14 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         public System.Threading.Tasks.Task DeleteUserAsync(string userName) {
             return base.Channel.DeleteUserAsync(userName);
+        }
+        
+        public MiniTorrent.WebPortal.ServiceReference1.User AdminGetUser(string userName) {
+            return base.Channel.AdminGetUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.WebPortal.ServiceReference1.User> AdminGetUserAsync(string userName) {
+            return base.Channel.AdminGetUserAsync(userName);
         }
     }
 }

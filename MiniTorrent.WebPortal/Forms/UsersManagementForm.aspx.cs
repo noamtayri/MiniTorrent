@@ -42,7 +42,7 @@ namespace MiniTorrent.WebPortal.Forms
         {
             string userName = SearchUserNameTextBox.Text;
             var client = new MiniTorrentServiceClient();
-            User user = client.GetUser(userName);
+            User user = client.AdminGetUser(userName);
             if (user == null)
             {
                 MessageBox.Show("Username not found");

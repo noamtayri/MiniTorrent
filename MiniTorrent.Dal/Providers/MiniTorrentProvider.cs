@@ -9,6 +9,7 @@ namespace MiniTorrent.Dal.Providers
 {
     public class MiniTorrentProvider
     {
+        //with treatment in Enable property
         public DomainModel.User GetUser(string userName)
         {
             using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
@@ -16,6 +17,17 @@ namespace MiniTorrent.Dal.Providers
                 return miniTorentDB.Users
                     .Where(u => u.UserName.Equals(userName) && u.Enable==true)
                     .Select(u => new DomainModel.User { UserName = u.UserName, Password = u.Password, EnableDisable = u.Enable.HasValue })
+                    .FirstOrDefault();
+            }
+        }
+        //without treatment in Enable property
+        public DomainModel.User AdminGetUser(string userName)
+        {
+            using (var miniTorentDB = new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"].ConnectionString))
+            {
+                return miniTorentDB.Users
+                    .Where(u => u.UserName.Equals(userName))
+                    .Select(u => new DomainModel.User { UserName = u.UserName, Password = u.Password, EnableDisable = (bool)u.Enable })
                     .FirstOrDefault();
             }
         }

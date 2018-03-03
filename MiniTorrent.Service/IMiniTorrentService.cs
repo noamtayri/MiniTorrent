@@ -53,6 +53,9 @@ namespace MiniTorrent.Service
         [OperationContract]
         void DeleteUser(string userName);
 
+        [OperationContract]
+        User AdminGetUser(string userName);
+
         // TODO: Add your service operations here
     }
 

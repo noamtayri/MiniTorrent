@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MiniTorrent.Dal.Providers;
+using DomainModel;
 
 namespace MiniTorrent.Service.Domain
 {
@@ -28,6 +29,11 @@ namespace MiniTorrent.Service.Domain
         public void DeleteUser(string userName)
         {
             _miniTorrentProvider.DeleteUser(userName);
+        }
+
+        public User AdminGetUser(string userName)
+        {
+            return _miniTorrentProvider.AdminGetUser(userName);
         }
     }
 }
