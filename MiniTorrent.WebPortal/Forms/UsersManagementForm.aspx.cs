@@ -26,10 +26,15 @@ namespace MiniTorrent.WebPortal.Forms
             if (client.AdminUpdateUser(oldUserName, newUserName, password, enable))
             {
                 MessageBox.Show("User updated");
+                SearchUserNameTextBox.Text = "";
+                UserNameTextBox.Text = "";
+                PasswordTextBox.Text = "";
+                EnableDisableCheckBox.Checked = false;
+                SearchUserNameTextBox.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Username not found");
+                MessageBox.Show("Username already exists");
             }
         }
 
@@ -47,6 +52,7 @@ namespace MiniTorrent.WebPortal.Forms
                 UserNameTextBox.Text = user.UserName;
                 PasswordTextBox.Text = user.Password;
                 EnableDisableCheckBox.Checked = user.EnableDisable;
+                SearchUserNameTextBox.Enabled = false;
             }
         }
     }
