@@ -244,5 +244,15 @@ namespace MiniTorrent.Dal.Providers
                 return miniTorentDB.Users.Count();
             }
         }
+
+        public int GetFilesAmount()
+        {
+            using (var miniTorentDB =
+                new MiniTorrentDBDataContext(ConfigurationManager.ConnectionStrings["MiniTorrentConnection"]
+                    .ConnectionString))
+            {
+                return miniTorentDB.TransferFiles.Count();
+            }
+        }
     }
 }

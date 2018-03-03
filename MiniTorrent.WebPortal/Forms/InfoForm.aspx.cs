@@ -14,6 +14,8 @@ namespace MiniTorrent.WebPortal.Forms
         {
             var client = new MiniTorrentServiceClient();
             OnlineUsersLabel.Text = client.GetOnlineUsers().ToString();
+            AllUsersLabel.Text = client.GetUsersAmount().ToString();
+            AllFilesLabel.Text = client.GetFilesAmount().ToString();
         }
 
         protected void SearchFileButton_Click(object sender, EventArgs e)

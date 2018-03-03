@@ -98,6 +98,18 @@
   <wsdl:message name="IMiniTorrentService_GetOnlineUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOnlineUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetUsersAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersAmount" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetUsersAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetFilesAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilesAmount" />
+  </wsdl:message>
+  <wsdl:message name="IMiniTorrentService_GetFilesAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilesAmountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMiniTorrentService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetData" message="tns:IMiniTorrentService_GetData_InputMessage" />
@@ -158,6 +170,14 @@
     <wsdl:operation name="GetOnlineUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers" message="tns:IMiniTorrentService_GetOnlineUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse" message="tns:IMiniTorrentService_GetOnlineUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetUsersAmount" message="tns:IMiniTorrentService_GetUsersAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetUsersAmountResponse" message="tns:IMiniTorrentService_GetUsersAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMiniTorrentService/GetFilesAmount" message="tns:IMiniTorrentService_GetFilesAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMiniTorrentService/GetFilesAmountResponse" message="tns:IMiniTorrentService_GetFilesAmount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMiniTorrentService" type="tns:IMiniTorrentService">
@@ -290,6 +310,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetOnlineUsers">
       <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersAmount">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetUsersAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesAmount">
+      <soap:operation soapAction="http://tempuri.org/IMiniTorrentService/GetFilesAmount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

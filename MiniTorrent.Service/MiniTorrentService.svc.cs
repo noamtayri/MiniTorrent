@@ -103,6 +103,18 @@ namespace MiniTorrent.Service
             return adminService.GetOnlineUsers();
         }
 
+        public int GetUsersAmount()
+        {
+            AdminService adminService = new AdminService();
+            return adminService.GetUsersAmount();
+        }
+
+        public int GetFilesAmount()
+        {
+            AdminService adminService = new AdminService();
+            return adminService.GetFilesAmount();
+        }
+
         /*
         public List<User> GetListOfResources(string fileName)
         {

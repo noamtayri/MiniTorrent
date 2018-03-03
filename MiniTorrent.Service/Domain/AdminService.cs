@@ -40,5 +40,15 @@ namespace MiniTorrent.Service.Domain
         {
             return _miniTorrentProvider.GetOnlineUsers();
         }
+
+        public int GetUsersAmount()
+        {
+            return _miniTorrentProvider.GetUsersAmount();
+        }
+
+        public int GetFilesAmount()
+        {
+            return _miniTorrentProvider.GetFilesAmount();
+        }
     }
 }

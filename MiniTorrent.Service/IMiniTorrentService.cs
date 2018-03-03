@@ -59,6 +59,12 @@ namespace MiniTorrent.Service
         [OperationContract]
         int GetOnlineUsers();
 
+        [OperationContract]
+        int GetUsersAmount();
+
+        [OperationContract]
+        int GetFilesAmount();
+
         // TODO: Add your service operations here
     }
 

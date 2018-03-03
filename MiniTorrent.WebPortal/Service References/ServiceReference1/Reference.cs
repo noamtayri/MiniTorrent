@@ -340,6 +340,18 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers", ReplyAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse")]
         System.Threading.Tasks.Task<int> GetOnlineUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUsersAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUsersAmountResponse")]
+        int GetUsersAmount();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUsersAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUsersAmountResponse")]
+        System.Threading.Tasks.Task<int> GetUsersAmountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetFilesAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetFilesAmountResponse")]
+        int GetFilesAmount();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetFilesAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetFilesAmountResponse")]
+        System.Threading.Tasks.Task<int> GetFilesAmountAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -487,6 +499,22 @@ namespace MiniTorrent.WebPortal.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> GetOnlineUsersAsync() {
             return base.Channel.GetOnlineUsersAsync();
+        }
+        
+        public int GetUsersAmount() {
+            return base.Channel.GetUsersAmount();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUsersAmountAsync() {
+            return base.Channel.GetUsersAmountAsync();
+        }
+        
+        public int GetFilesAmount() {
+            return base.Channel.GetFilesAmount();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetFilesAmountAsync() {
+            return base.Channel.GetFilesAmountAsync();
         }
     }
 }
