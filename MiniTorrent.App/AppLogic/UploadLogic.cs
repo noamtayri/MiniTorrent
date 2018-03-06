@@ -79,7 +79,7 @@ namespace MiniTorrent.App.AppLogic
                     finishRead = false;
                 }
             }
-            info.Status = "Upload waiting";
+            info.Status = "Uploading";
             MyUploadEvent(info);
         }
     }

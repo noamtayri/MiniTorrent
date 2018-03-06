@@ -17,6 +17,7 @@ using MiniTorrent.App.AppLogic;
 using MiniTorrent.App.AppLogic.Classes;
 using MiniTorrent.App.MiniTorrentService;
 using System.IO;
+using System.Reflection;
 
 namespace MiniTorrent.App
 {
@@ -153,6 +154,7 @@ namespace MiniTorrent.App
                         {
                             line.Status = info.Status;
                             line.Time = info.Time;
+                            line.Kbps = info.Kbps;
                             _userLogic.UpdateUserTransferFilesLogic(line.FileName, MyUser.UserName);
                             _fileLogic.CopyFileByPaths(line.FileName, downloadPath, uploadPath);
                         }
@@ -176,6 +178,36 @@ namespace MiniTorrent.App
             var clinet = new MiniTorrentServiceClient();
             clinet.LogoutFlag(MyUser.UserName);
             MainWindow.Close();
+        }
+
+        private void RunDllButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dllFile = FileTransferListView.SelectedItem as TransferFile;
+                string fullFilePath = string.Join("\\", downloadPath, dllFile.FileName);
+                string extension = System.IO.Path.GetExtension(fullFilePath);
+                //if (!extension.Equals(".dll"))
+                //throw new Exception();
+                Assembly myassembly = Assembly.LoadFrom(fullFilePath);
+                DisplayAssembly(myassembly);
+            }
+            catch
+            {
+                MessageBox.Show("Can't Load dll file");
+            }
+        }
+
+        private void DisplayAssembly(Assembly myassembly)
+        {
+            Type type = myassembly.GetType("TestDll.Class1");
+
+            object instance = Activator.CreateInstance(type);
+            //MethodInfo mth = type.GetMethod("print");
+            MethodInfo[] methods = type.GetMethods();
+            object res = methods[0].Invoke(instance, null);
+
+            MessageBox.Show(res.ToString());
         }
     }
 }

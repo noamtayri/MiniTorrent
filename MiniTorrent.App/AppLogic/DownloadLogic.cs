@@ -68,7 +68,7 @@ namespace MiniTorrent.App.AppLogic
             TimeSpan timeSpan = DateTime.Now - DateTime.Parse(info.Time);
             info.Time = String.Format("{0:hh\\:mm\\:ss}",timeSpan);
             info.Kbps = (int)(fileSize / timeSpan.TotalSeconds / 1000);
-            info.Status = "Download completed";
+            info.Status = "Downloaded/Uploading";
             MyDownloadEvent(info, true);
         }
 

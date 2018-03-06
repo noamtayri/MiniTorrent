@@ -23,6 +23,9 @@ namespace MiniTorrent.App.MiniTorrentService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool EnableDisableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -44,6 +47,19 @@ namespace MiniTorrent.App.MiniTorrentService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool EnableDisable {
+            get {
+                return this.EnableDisableField;
+            }
+            set {
+                if ((this.EnableDisableField.Equals(value) != true)) {
+                    this.EnableDisableField = value;
+                    this.RaisePropertyChanged("EnableDisable");
+                }
             }
         }
         
@@ -138,6 +154,9 @@ namespace MiniTorrent.App.MiniTorrentService {
         private int FileSizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KbpsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourcesNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -178,6 +197,19 @@ namespace MiniTorrent.App.MiniTorrentService {
                 if ((this.FileSizeField.Equals(value) != true)) {
                     this.FileSizeField = value;
                     this.RaisePropertyChanged("FileSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Kbps {
+            get {
+                return this.KbpsField;
+            }
+            set {
+                if ((this.KbpsField.Equals(value) != true)) {
+                    this.KbpsField = value;
+                    this.RaisePropertyChanged("Kbps");
                 }
             }
         }
@@ -294,6 +326,48 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AddNewUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AddNewUserResponse")]
         System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUserResponse")]
+        MiniTorrent.App.MiniTorrentService.User GetUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUserResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> GetUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminUpdateUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminUpdateUserResponse")]
+        bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminUpdateUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminUpdateUserResponse")]
+        System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/DeleteUser", ReplyAction="http://tempuri.org/IMiniTorrentService/DeleteUserResponse")]
+        void DeleteUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/DeleteUser", ReplyAction="http://tempuri.org/IMiniTorrentService/DeleteUserResponse")]
+        System.Threading.Tasks.Task DeleteUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminGetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse")]
+        MiniTorrent.App.MiniTorrentService.User AdminGetUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/AdminGetUser", ReplyAction="http://tempuri.org/IMiniTorrentService/AdminGetUserResponse")]
+        System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> AdminGetUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers", ReplyAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse")]
+        int GetOnlineUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetOnlineUsers", ReplyAction="http://tempuri.org/IMiniTorrentService/GetOnlineUsersResponse")]
+        System.Threading.Tasks.Task<int> GetOnlineUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUsersAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUsersAmountResponse")]
+        int GetUsersAmount();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetUsersAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetUsersAmountResponse")]
+        System.Threading.Tasks.Task<int> GetUsersAmountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetFilesAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetFilesAmountResponse")]
+        int GetFilesAmount();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiniTorrentService/GetFilesAmount", ReplyAction="http://tempuri.org/IMiniTorrentService/GetFilesAmountResponse")]
+        System.Threading.Tasks.Task<int> GetFilesAmountAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -401,6 +475,62 @@ namespace MiniTorrent.App.MiniTorrentService {
         
         public System.Threading.Tasks.Task<bool> AddNewUserAsync(string userName, string password) {
             return base.Channel.AddNewUserAsync(userName, password);
+        }
+        
+        public MiniTorrent.App.MiniTorrentService.User GetUser(string userName) {
+            return base.Channel.GetUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> GetUserAsync(string userName) {
+            return base.Channel.GetUserAsync(userName);
+        }
+        
+        public bool AdminUpdateUser(string oldUserName, string newUserName, string password, bool enable) {
+            return base.Channel.AdminUpdateUser(oldUserName, newUserName, password, enable);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AdminUpdateUserAsync(string oldUserName, string newUserName, string password, bool enable) {
+            return base.Channel.AdminUpdateUserAsync(oldUserName, newUserName, password, enable);
+        }
+        
+        public void DeleteUser(string userName) {
+            base.Channel.DeleteUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(string userName) {
+            return base.Channel.DeleteUserAsync(userName);
+        }
+        
+        public MiniTorrent.App.MiniTorrentService.User AdminGetUser(string userName) {
+            return base.Channel.AdminGetUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<MiniTorrent.App.MiniTorrentService.User> AdminGetUserAsync(string userName) {
+            return base.Channel.AdminGetUserAsync(userName);
+        }
+        
+        public int GetOnlineUsers() {
+            return base.Channel.GetOnlineUsers();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetOnlineUsersAsync() {
+            return base.Channel.GetOnlineUsersAsync();
+        }
+        
+        public int GetUsersAmount() {
+            return base.Channel.GetUsersAmount();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUsersAmountAsync() {
+            return base.Channel.GetUsersAmountAsync();
+        }
+        
+        public int GetFilesAmount() {
+            return base.Channel.GetFilesAmount();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetFilesAmountAsync() {
+            return base.Channel.GetFilesAmountAsync();
         }
     }
 }

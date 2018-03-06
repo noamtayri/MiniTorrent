@@ -13,5 +13,6 @@ namespace DomainModel
         public int ResourcesNumber { get; set; }
         public string Status { get; set; }
         public string Time { get; set; }
+        public int Kbps { get; set; }
     }
 }
