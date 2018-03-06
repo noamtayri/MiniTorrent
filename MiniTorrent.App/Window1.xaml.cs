@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -38,6 +39,7 @@ namespace MiniTorrent.App
         public Window1(User user, Window mainWindow)
         {
             InitializeComponent();
+            Closing += WindowClosed;
             MyUser = user;
             this.MainWindow = mainWindow;
             _userLogic = new UserLogic();
@@ -119,8 +121,10 @@ namespace MiniTorrent.App
                 foreach (TransferFile line in FileTransferListView.Items)
                 {
                     if (line.FileName.Equals(info.FileName))
-                        break;
+                    {
                         line.Status = info.Status;
+                        break;
+                    }
                 }
                 FileTransferListView.Items.Refresh();
             }));        
@@ -165,6 +169,13 @@ namespace MiniTorrent.App
             EditMyConfigWindow editWindow = new EditMyConfigWindow(MyUser, this);
             editWindow.Show();
             this.Hide();
+        }
+
+        public void WindowClosed(object sender, CancelEventArgs e)
+        {
+            var clinet = new MiniTorrentServiceClient();
+            clinet.LogoutFlag(MyUser.UserName);
+            MainWindow.Close();
         }
     }
 }
